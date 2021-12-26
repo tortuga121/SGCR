@@ -2,9 +2,10 @@ package Model;
 
 import java.time.LocalDateTime;
 
-public interface IRepairPlan {
+public interface IRepairPlan{
     int getRegCode();
     String getDescription();
     LocalDateTime totalTime();
     double totalCost();
+    IRepairPlan clone();
 }
