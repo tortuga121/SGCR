@@ -12,7 +12,7 @@ public class RepairCatalog {
 
     public IRepairPlan oldestRepair() {
         return toRepair.firstEntry().getValue();
-    } // null no caso de não existir
+    }
 
     public void addRepairPlan(IRepairPlan rp) {
         repairs.put(rp.getRegCode(),rp.clone());
