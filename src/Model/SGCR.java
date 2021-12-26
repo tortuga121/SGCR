@@ -1,11 +1,12 @@
 package Model;
 import Exception.*;
 public class SGCR implements ISGCR {
-    private IRecords rec;
+    private IWorkersCatalog rec;
+    private IDeviceCatalog dc;
 
     @Override
     public void addBudgetRequest(IDevice device, int recepcionistId) throws WorkerDoesNotExist {
-        rec.addRequest(device, recepcionistId);
+        dc.addRequest(device, recepcionistId);
     }
 
     @Override
@@ -19,5 +20,16 @@ public class SGCR implements ISGCR {
         rec.addRepairPlan(rp);
         //send email
     }
-    
+
+    @Override
+    public void abandonDevice(int regCode) throws DeviceNotFoundException {
+        dc.abandonDevice(regCode);
+    }
+
+   /* @Override
+    public void rejectBudget(int regCode) throws DeviceNotFoundException, NoRepairException {
+        rec.rejectBudget(regCode);
+    }*/
+
+
 }
