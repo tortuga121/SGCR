@@ -1,4 +1,4 @@
-package Model;
+package Model.Client;
 import Exception.*;
 public interface IDeviceCatalog {
     void addRequest(IDevice dev) throws InvalidRegistrationCodeException;

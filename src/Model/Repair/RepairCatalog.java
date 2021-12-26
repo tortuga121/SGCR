@@ -22,7 +22,6 @@ public class RepairCatalog implements IRepairCatalog{
         if(repairs.containsKey(regCode))
             return repairs.get(regCode).clone();
         else throw new NoRepairException("Repair: " + regCode + "does not exist");
-
     }
 
     public void addRepairPlan(IRepairPlan rp) {

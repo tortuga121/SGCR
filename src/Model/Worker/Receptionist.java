@@ -1,7 +1,7 @@
 package Model.Worker;
 
-import Model.Device;
-import Model.IDevice;
+import Model.Client.Device;
+import Model.Client.IDevice;
 
 import java.time.LocalDateTime;
 

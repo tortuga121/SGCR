@@ -1,5 +1,7 @@
 package Model;
 import Exception.*;
+import Model.Client.IDevice;
+import Model.Client.IDeviceCatalog;
 import Model.Repair.IRepairCatalog;
 import Model.Repair.IRepairPlan;
 import Model.Worker.IWorkersCatalog;

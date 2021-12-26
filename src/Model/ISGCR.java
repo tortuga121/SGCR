@@ -1,5 +1,6 @@
 package Model;
 import Exception.*;
+import Model.Client.IDevice;
 import Model.Repair.IRepairPlan;
 
 import java.time.LocalTime;
