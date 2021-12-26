@@ -1,5 +1,11 @@
 package Model;
 import Exception.*;
+import Model.Repair.IRepairCatalog;
+import Model.Repair.IRepairPlan;
+import Model.Worker.IWorkersCatalog;
+
+import java.time.LocalTime;
+
 public class SGCR  implements ISGCR{
     private IWorkersCatalog wcat;
     private IDeviceCatalog dcat;
@@ -22,7 +28,16 @@ public class SGCR  implements ISGCR{
             throw new DeviceNotFoundException("Not the oldest device" + rp.getRegCode());
         rcat.addRepairPlan(rp);
         dcat.popOldestRequest();
+    }
 
+    @Override
+    public IRepairPlan getMostUrgentRepair() throws NoRepairException {
+        return rcat.getRepairPlan(rcat.mostUrgentRepair());
+    }
+
+    @Override
+    public void repairNextStep(int regCode, int techId, double cost, LocalTime time) throws WorkerDoesNotExist, NoRepairException {
+        rcat.getRepairPlan(regCode);
     }
 
 }
