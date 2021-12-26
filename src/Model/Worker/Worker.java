@@ -1,4 +1,4 @@
-package Model;
+package Model.Worker;
 
 public class Worker implements IWorker {
     private String name;

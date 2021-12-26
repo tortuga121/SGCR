@@ -1,4 +1,7 @@
-package Model;
+package Model.Worker;
+
+import Model.Client.Device;
+import Model.Client.IDevice;
 
 import java.time.LocalDateTime;
 
@@ -37,4 +40,10 @@ public class Receptionist extends Worker implements IReceptionist {
         totalReceptions++;
     }
 
+    public static class Manager extends Worker implements IManager {
+
+        public Manager(String name, int id) {
+            super(name, id);
+        }
+    }
 }

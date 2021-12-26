@@ -1,4 +1,4 @@
-package Model;
+package Model.Repair;
 
 import java.time.LocalDate;
 import java.util.HashMap;
@@ -12,8 +12,16 @@ public class RepairCatalog implements IRepairCatalog{
     private HashMap<Integer, LocalDate> toApprove;
 
 
-    public IRepairPlan mostUrgentRepair() {
-        return repairs.get(toRepair.first()).clone();
+    public int mostUrgentRepair() throws NoRepairException{
+       if(toRepair.size() < 1) throw new NoRepairException("No more reapirs to do");
+       return toRepair.first();
+    }
+
+    @Override
+    public IRepairPlan getRepairPlan(int regCode) throws NoRepairException {
+        if(repairs.containsKey(regCode))
+            return repairs.get(regCode).clone();
+        else throw new NoRepairException("Repair: " + regCode + "does not exist");
     }
 
     public void addRepairPlan(IRepairPlan rp) {

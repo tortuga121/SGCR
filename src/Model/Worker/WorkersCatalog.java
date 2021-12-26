@@ -1,14 +1,12 @@
-package Model;
+package Model.Worker;
 
-
-import java.time.LocalDate;
 import java.util.*;
 
 import Exception.*;
 
-public class WorkersCatalog {
+public class WorkersCatalog implements IWorkersCatalog{
 
-    private HashMap<Integer,Worker> workers;
+    private HashMap<Integer,IWorker> workers;
     private HashMap<Integer,String> logins;
 
 
@@ -26,7 +24,7 @@ public class WorkersCatalog {
     }
 
     public boolean existsManager(int id) {
-        return existsWorker(id) && workers.get(id).getClass() == Manager.class;
+        return existsWorker(id) && workers.get(id).getClass() == Receptionist.Manager.class;
     }
 
     public boolean existsTechnician(int id) {
@@ -35,5 +33,12 @@ public class WorkersCatalog {
 
     public boolean existsWorker(int id) {
         return workers.containsKey(id);
+    }
+
+    @Override
+    public void incRecepServiceCount(int id) throws WorkerDoesNotExist {
+        if(existsReceptionist(id))
+            ((IReceptionist )workers.get(id)).addReception();
+        else throw new WorkerDoesNotExist("Receptionist " + id);
     }
 }

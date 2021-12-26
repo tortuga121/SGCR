@@ -1,4 +1,4 @@
-package Model;
+package Model.Worker;
 
 public interface IWorker {
     String getName();
