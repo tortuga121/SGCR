@@ -3,7 +3,7 @@ package Model;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
-// CLONE PODE SER INIFINITO TESTAR
+// CLONE PODE SER INFINITO TESTAR
 public class Step {
     private double cost;
     private String description;
