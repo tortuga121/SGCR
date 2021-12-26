@@ -5,7 +5,7 @@ public class SGCR  implements ISGCR{
     private IDeviceCatalog dcat;
     private IRepairCatalog rcat;
 
-    public void addBudgetRequest(IDevice device, int recepcionistId) throws WorkerDoesNotExist {
+    public void addBudgetRequest(IDevice device, int recepcionistId) throws WorkerDoesNotExist, InvalidRegistrationCodeException {
         dcat.addRequest(device);
         wcat.incRecepServiceCount(recepcionistId);
     }
