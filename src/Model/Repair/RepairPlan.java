@@ -64,12 +64,14 @@ public class RepairPlan implements IRepairPlan {
 
         if (optionalStage.isEmpty()) throw new NoMoreStepsExecption();
         Stage s = optionalStage.get();
-
-        if (s.hasSteps()) s.repairStep(cost, time);
-        else if (!s.hasSteps()) {
-            s.setCost(cost);
+        if(s.hasSteps()) {
+            s.repairStep(cost, time);
+            if (!s.hasSteps()) {
+                s.calculate_costAndTime();
+            }
+        } else {
             s.setTime(time);
-            s.done();
+            s.setCost(cost);
         }
         return i;
     }
@@ -78,7 +80,7 @@ public class RepairPlan implements IRepairPlan {
     public double getTimeofRepair() {
        return stages.stream().mapToDouble(Step::getTime).sum();
     }
-
+    //TODO
     @Override
     public int compareTo(Object o) {
         RepairPlan rp = (RepairPlan) o;

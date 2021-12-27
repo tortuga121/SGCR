@@ -15,7 +15,7 @@ public class DeviceCatalog implements IDeviceCatalog {
 
     public IDevice getOldestRequest() throws DeviceNotFoundException {
         if(budgetRequest.size() == 0)
-            throw new DeviceNotFoundException("No more budgets requests");
+            throw new DeviceNotFoundException("No more budget requests");
         else return devices.get(budgetRequest.element());
     }
     public void addRequest(IDevice dev) throws InvalidRegistrationCodeException{
