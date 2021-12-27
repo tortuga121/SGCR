@@ -5,8 +5,11 @@ import Model.Client.IDeviceCatalog;
 import Model.Repair.IRepairCatalog;
 import Model.Repair.IRepairPlan;
 import Model.Worker.IWorkersCatalog;
+import Model.Worker.Receptionist;
+import Model.Worker.Technician;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
 
 public class SGCR  implements ISGCR{
     private IWorkersCatalog wcat;
@@ -43,4 +46,12 @@ public class SGCR  implements ISGCR{
         wcat.updateTechicianStep(regCode,stage,techId);
     }
 
+    @Override
+    public void evaluateCenterFunctioning(ArrayList<Technician> technicians, ArrayList<Receptionist> receptionists) throws WorkerDoesNotExist{
+        for (Technician t: technicians) {
+            t.getId();
+
+
+        }
+    }
 }
