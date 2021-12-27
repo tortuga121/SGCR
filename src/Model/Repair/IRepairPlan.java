@@ -9,5 +9,5 @@ public interface IRepairPlan{
     LocalDateTime totalTime();
     double totalCost();
     IRepairPlan clone();
-    void repairNext(double cost, LocalTime time) throws NoMoreStepsExecption;
+    int repairNext(double cost, LocalTime time) throws NoMoreStepsExecption;
 }

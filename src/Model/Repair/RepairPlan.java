@@ -44,16 +44,27 @@ public class RepairPlan implements IRepairPlan {
     }
 
     @Override
-    public void repairNext(double cost, LocalTime time) throws NoMoreStepsExecption {
-        Optional<Stage> optionalStage = stages.stream().filter(Stage::isUndone).findFirst();
-        if(optionalStage.isEmpty()) throw new NoMoreStepsExecption();
+    public int repairNext(double cost, LocalTime time) throws NoMoreStepsExecption {
+        Optional<Stage> optionalStage = Optional.empty();
+        int i;
+        for (i = 0; i < stages.size(); i++) {
+            Stage s = stages.get(i);
+            if (!s.isUndone()) {
+                optionalStage = Optional.of(s);
+                break;
+            }
+        }
+
+        if (optionalStage.isEmpty()) throw new NoMoreStepsExecption();
         Stage s = optionalStage.get();
-        if(s.hasSteps()) s.repairStep(cost,time);
-        else if(!s.hasSteps()) {
+
+        if (s.hasSteps()) s.repairStep(cost, time);
+        else if (!s.hasSteps()) {
             s.setCost(cost);
             s.setTime(time);
             s.done();
         }
+        return i;
     }
 
 }
