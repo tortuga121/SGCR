@@ -9,11 +9,8 @@ import Model.Worker.IWorkersCatalog;
 import Model.Worker.Receptionist;
 import Model.Worker.Technician;
 
-<<<<<<< HEAD
 import java.time.LocalTime;
 import java.util.ArrayList;
-=======
->>>>>>> 2937800669990f6ecf4605a53de96975b83a4997
 
 public class SGCR implements ISGCR{
     private IWorkersCatalog wcat;
@@ -50,7 +47,6 @@ public class SGCR implements ISGCR{
         wcat.updateTechicianStep(regCode,stage,techId);
     }
 
-<<<<<<< HEAD
     @Override
     public void evaluateCenterFunctioning(ArrayList<Technician> technicians, ArrayList<Receptionist> receptionists) throws WorkerDoesNotExist{
         for (Technician t: technicians) {
@@ -59,11 +55,10 @@ public class SGCR implements ISGCR{
 
         }
     }
-=======
+
     public int getTechPart(int techId) throws WorkerDoesNotExist {
         if(!wcat.existsTechnician(techId)) throw new WorkerDoesNotExist("Technician: " + techId + "does not exist");
         return ((ITechnician) wcat.getWorker(techId)).getTotalParticipations();
     }
 
->>>>>>> 2937800669990f6ecf4605a53de96975b83a4997
 }
