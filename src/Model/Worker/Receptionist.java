@@ -11,6 +11,8 @@ public class Receptionist extends Worker implements IReceptionist {
 
     public Receptionist(String name, int id) {
         super(name, id);
+        totalDeliveries = 0;
+        totalReceptions = 0;
     }
 
     @Override

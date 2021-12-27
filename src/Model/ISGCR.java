@@ -11,5 +11,5 @@ public interface ISGCR {
     void sugestRepairPlan(IRepairPlan rp) throws DeviceNotFoundException;
     IRepairPlan getMostUrgentRepair() throws NoRepairException;
     void repairNextStep(int regCode, int techId, double cost, double time) throws WorkerDoesNotExist, NoRepairException, NoMoreStepsExecption;
-
+    int getTechPart(int techId) throws WorkerDoesNotExist;
 }

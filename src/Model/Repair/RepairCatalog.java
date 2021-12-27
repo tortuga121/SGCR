@@ -13,7 +13,7 @@ public class RepairCatalog implements IRepairCatalog{
 
 
     public int mostUrgentRepair() throws NoRepairException{
-       if(toRepair.size() < 1) throw new NoRepairException("No more reapirs to do");
+       if(toRepair.size() < 1) throw new NoRepairException("No more repairs to do");
        return toRepair.first();
     }
 

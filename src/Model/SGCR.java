@@ -4,11 +4,11 @@ import Model.Client.IDevice;
 import Model.Client.IDeviceCatalog;
 import Model.Repair.IRepairCatalog;
 import Model.Repair.IRepairPlan;
+import Model.Worker.ITechnician;
 import Model.Worker.IWorkersCatalog;
 
-import java.time.LocalTime;
 
-public class SGCR  implements ISGCR{
+public class SGCR implements ISGCR{
     private IWorkersCatalog wcat;
     private IDeviceCatalog dcat;
     private IRepairCatalog rcat;
@@ -41,6 +41,11 @@ public class SGCR  implements ISGCR{
     public void repairNextStep(int regCode, int techId, double cost, double time) throws WorkerDoesNotExist, NoRepairException, NoMoreStepsExecption {
         int stage = rcat.getRepairPlan(regCode).repairNext(cost,time);
         wcat.updateTechicianStep(regCode,stage,techId);
+    }
+
+    public int getTechPart(int techId) throws WorkerDoesNotExist {
+        if(!wcat.existsTechnician(techId)) throw new WorkerDoesNotExist("Technician: " + techId + "does not exist");
+        return ((ITechnician) wcat.getWorker(techId)).getTotalParticipations();
     }
 
 }
