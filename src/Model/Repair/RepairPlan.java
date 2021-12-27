@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import Exception.NoMoreStepsExecption;
 
@@ -16,6 +17,11 @@ public class RepairPlan implements IRepairPlan {
         this.regCode = regCode;
         this.generalDescription = generalDescription;
         this.stages = stages;
+    }
+    public RepairPlan(RepairPlan rp) {
+        this.regCode = rp.regCode;
+        this.generalDescription = rp.generalDescription;
+        this.stages = rp.stages.stream().map(Stage::clone).collect(Collectors.toCollection(ArrayList::new));
     }
 
     @Override
@@ -40,8 +46,8 @@ public class RepairPlan implements IRepairPlan {
 
     @Override
     public IRepairPlan clone() {
-        //TODO
-        return null;
+
+        return new RepairPlan(this);
     }
 
     @Override
@@ -72,10 +78,12 @@ public class RepairPlan implements IRepairPlan {
     public double getTimeofRepair() {
        return stages.stream().mapToDouble(Step::getTime).sum();
     }
-    // TODO
+
     @Override
     public int compareTo(Object o) {
         RepairPlan rp = (RepairPlan) o;
-        return 0;
+        return getTimeofRepair() - rp.getTimeofRepair() == 0 ?
+                getRegCode() - rp.getRegCode() :
+                (int) (getTimeofRepair() - rp.getTimeofRepair());
     }
 }

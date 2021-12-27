@@ -8,6 +8,23 @@ public class Step {
     private String description;
     private double hours;
 
+    public Step( double cost, String description, double hours) {
+        this.cost = cost;
+        this.description = description;
+        this.hours = hours;
+    }
+
+    public Step(Step s) {
+        this.cost = s.cost;
+        this.description = s.description;
+        this.hours = s.hours;
+        this.done = s.done;
+    }
+
+    public Step clone() {
+        return new Step(this);
+    }
+
     public void setCost(double cost) {
         this.cost = cost;
     }

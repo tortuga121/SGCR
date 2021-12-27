@@ -1,12 +1,25 @@
 package Model.Repair;
 
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Optional;
+import java.util.stream.Collectors;
+
 import Exception.NoMoreStepsExecption;
 
 public class Stage  extends Step{
     private ArrayList<Step> steps;
+
+    public Stage(double cost, String description, double hours, ArrayList<Step> ss) {
+        super(cost, description, hours);
+        steps = ss.stream().map(Step::clone).collect(Collectors.toCollection(ArrayList::new));
+    }
+    public Stage(Stage s) {
+        super(s.getCost(), s.getDescription(), s.getTime());
+        steps = s.steps.stream().map(Step::clone).collect(Collectors.toCollection(ArrayList::new));
+    }
+    public Stage clone() {
+        return new Stage(this);
+    }
     public boolean hasSteps() {
         return steps.size() > 0;
     }
