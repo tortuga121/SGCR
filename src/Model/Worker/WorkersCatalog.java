@@ -24,7 +24,7 @@ public class WorkersCatalog implements IWorkersCatalog{
     }
 
     public boolean existsManager(int id) {
-        return existsWorker(id) && workers.get(id).getClass() == Receptionist.Manager.class;
+        return existsWorker(id) && workers.get(id).getClass() == Manager.class;
     }
 
     public boolean existsTechnician(int id) {
