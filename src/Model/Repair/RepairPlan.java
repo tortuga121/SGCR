@@ -1,4 +1,5 @@
 package Model.Repair;
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -44,7 +45,7 @@ public class RepairPlan implements IRepairPlan {
     }
 
     @Override
-    public int repairNext(double cost, LocalTime time) throws NoMoreStepsExecption {
+    public int repairNext(double cost, double time) throws NoMoreStepsExecption {
         Optional<Stage> optionalStage = Optional.empty();
         int i;
         for (i = 0; i < stages.size(); i++) {
@@ -67,4 +68,14 @@ public class RepairPlan implements IRepairPlan {
         return i;
     }
 
+    @Override
+    public double getTimeofRepair() {
+       return stages.stream().mapToDouble(Step::getTime).sum();
+    }
+    // TODO
+    @Override
+    public int compareTo(Object o) {
+        RepairPlan rp = (RepairPlan) o;
+        return 0;
+    }
 }

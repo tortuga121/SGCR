@@ -6,14 +6,14 @@ public class Step {
     private boolean done;
     private double cost;
     private String description;
-    private LocalTime time;
+    private double hours;
 
     public void setCost(double cost) {
         this.cost = cost;
     }
 
-    public void setTime(LocalTime time) {
-        this.time = time;
+    public void setTime(double time) {
+        this.hours = time;
     }
 
     public boolean isUndone() {
@@ -25,8 +25,8 @@ public class Step {
     public double getCost() {
         return cost;
     }
-    public LocalTime getTime() {
-        return time;
+    public double getTime() {
+        return hours;
     }
     public String getDescription() {
         return description;

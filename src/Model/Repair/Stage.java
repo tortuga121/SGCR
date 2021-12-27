@@ -10,7 +10,7 @@ public class Stage  extends Step{
     public boolean hasSteps() {
         return steps.size() > 0;
     }
-    public void repairStep(double cost, LocalTime time) throws NoMoreStepsExecption {
+    public void repairStep(double cost, double time) throws NoMoreStepsExecption {
         Optional<Step> optionalStep = steps.stream().filter(Step::isUndone).findFirst();
         if(optionalStep.isEmpty()) throw new NoMoreStepsExecption();
         Step s = optionalStep.get();
