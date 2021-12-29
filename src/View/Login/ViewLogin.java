@@ -1,6 +1,7 @@
 package View.Login;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class ViewLogin extends JFrame{
     private JPanel mainPanel;
@@ -12,7 +13,7 @@ public class ViewLogin extends JFrame{
 
     public ViewLogin() {
         super("Login Form");
-        this.mainPanel.setSize(500, 200);
+        this.mainPanel.setPreferredSize(new Dimension(270, 140));
         this.mainPanel.revalidate();
         this.mainPanel.repaint();
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
