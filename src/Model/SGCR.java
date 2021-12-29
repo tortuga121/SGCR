@@ -71,8 +71,7 @@ public class SGCR implements ISGCR{
 
     @Override
     public boolean login(int id, String pass) throws WorkerDoesNotExist {
-        //TODO credenciais validas
-        return false;
+        return wcat.login(id,pass);
     }
 
 }
