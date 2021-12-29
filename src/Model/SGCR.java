@@ -59,4 +59,12 @@ public class SGCR implements ISGCR{
         ((IManager) wcat.getWorker(managerId)).addEval(y,m,eval);
     }
 
+    @Override
+    public void makeExpressRepair(String type, int regcode, String desrp, int techId) throws DeviceNotFoundException, WorkerDoesNotExist {
+        if(!dcat.existsDevice(regcode)) throw new DeviceNotFoundException("Device: " + regcode + "does not exist");
+        rcat.addExpressrepair(type,regcode,desrp);
+        wcat.updateTechicianStep(regcode,-1,techId);
+
+    }
+
 }

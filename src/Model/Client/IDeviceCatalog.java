@@ -5,5 +5,6 @@ public interface IDeviceCatalog {
     void addToPickup(int regCode) throws DeviceNotFoundException;
     void popOldestRequest() throws DeviceNotFoundException;
     IDevice getOldestRequest() throws DeviceNotFoundException;
+    boolean existsDevice(int regCode);
 
 }

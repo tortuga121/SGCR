@@ -15,4 +15,5 @@ public interface ISGCR {
     void repairNextStep(int regCode, int techId, double cost, double time) throws WorkerDoesNotExist, NoRepairException, NoMoreStepsExecption;
     Map<Integer,Integer> evaluateCenterFunctioning () throws WorkerDoesNotExist;
     void makeMonthEval(Year y, Month m , String eval, int manegerId) throws WorkerDoesNotExist;
+    void makeExpressRepair(String type, int regcode, String desrp, int techId) throws DeviceNotFoundException, WorkerDoesNotExist;
 }

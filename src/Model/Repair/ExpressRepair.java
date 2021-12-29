@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 public class ExpressRepair implements IExpressRepair {
     private int regCode;
     private String generalDescription;
+    private String type;
     private static final HashMap<String,Double> expressTypes;
     static {
         expressTypes = new HashMap<>();
@@ -15,7 +16,18 @@ public class ExpressRepair implements IExpressRepair {
         // TODO
         //adicionar mais exemplos
     }
-    
+
+    public ExpressRepair(int regCode, String generalDescription, String type) {
+        this.regCode = regCode;
+        this.generalDescription = generalDescription;
+        this.type = type;
+    }
+
+    @Override
+    public String getType() {
+        return type;
+    }
+
     @Override
     public int getRegCode() {
         return regCode;

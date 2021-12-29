@@ -36,7 +36,7 @@ public class DeviceCatalog implements IDeviceCatalog {
         else devices.get(budgetRequest.poll());
     }
 
-
+    @Override
     public boolean existsDevice(int regCode) {
         return devices.containsKey(regCode);
     }
