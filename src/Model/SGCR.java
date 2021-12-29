@@ -53,11 +53,6 @@ public class SGCR implements ISGCR{
         return wcat.num_rep_technicians();
     }
 
-    public int getTechPart(int techId) throws WorkerDoesNotExist {
-        if(!wcat.existsTechnician(techId)) throw new WorkerDoesNotExist("Technician: " + techId + "does not exist");
-        return ((ITechnician) wcat.getWorker(techId)).getTotalParticipations();
-    }
-
     @Override
     public void makeMonthEval(Year y, Month m, String eval, int managerId) throws WorkerDoesNotExist {
         if(!wcat.existsManager(managerId)) throw new WorkerDoesNotExist("Manager: " + managerId + "does not exist");

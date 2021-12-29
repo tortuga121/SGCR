@@ -14,6 +14,5 @@ public interface ISGCR {
     IRepairPlan getMostUrgentRepair() throws NoRepairException;
     void repairNextStep(int regCode, int techId, double cost, double time) throws WorkerDoesNotExist, NoRepairException, NoMoreStepsExecption;
     Map<Integer,Integer> evaluateCenterFunctioning () throws WorkerDoesNotExist;
-    int getTechPart(int techId) throws WorkerDoesNotExist;
     void makeMonthEval(Year y, Month m , String eval, int manegerId) throws WorkerDoesNotExist;
 }
