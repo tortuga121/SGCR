@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Queue;
+import java.util.stream.Collectors;
+
 import Exception.*;
 
 public class DeviceCatalog implements IDeviceCatalog {
@@ -48,5 +50,12 @@ public class DeviceCatalog implements IDeviceCatalog {
                 abandonedDevices.add(e.getKey());
                 toPickup.remove(e.getKey());
             }
+        toPickup.forEach((key, value) -> {
+            if (value.compareTo(LocalDate.now()) > 0)
+                abandonedDevices.add(key);
+        });
+        toPickup = new HashMap<>( toPickup.entrySet().stream()
+                .filter(e -> e.getValue().compareTo(LocalDate.now()) < 0)
+                .collect(Collectors.toMap(Map.Entry::getKey,Map.Entry::getValue)));
     }
 }

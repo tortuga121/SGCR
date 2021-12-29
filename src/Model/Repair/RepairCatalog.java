@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeSet;
+import java.util.stream.Collectors;
 
 
 import Exception.*;
@@ -14,15 +15,14 @@ public class RepairCatalog implements IRepairCatalog{
     private TreeSet<Integer> toRepair;
     private HashMap<Integer, LocalDateTime> toApprove;
 
-    void checkForOutdated() {
-        for(Map.Entry<Integer,LocalDateTime>  e: toApprove.entrySet()) {
-            if(e.getValue().compareTo(LocalDateTime.now()) > 0)
-                toApprove.remove(e.getKey());
-        }
-        for(int id : toRepair) {
-            if(repairs.get(id).getDeadline().compareTo(LocalDateTime.now()) > 0)
-                toRepair.remove(id);
-        }
+    public void checkForOutdated() {
+        toApprove =  new HashMap<>( toApprove.entrySet()
+                .stream()
+                .filter(e -> e.getValue().compareTo(LocalDateTime.now()) < 0)
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue)));
+        toRepair = toRepair.stream()
+                .filter(id -> repairs.get(id).getDeadline().compareTo(LocalDateTime.now()) < 0)
+                .collect(Collectors.toCollection(TreeSet::new));
     }
 
     @Override
