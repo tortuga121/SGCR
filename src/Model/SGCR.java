@@ -1,16 +1,11 @@
 package Model;
 import Exception.*;
-import Model.Client.IDevice;
-import Model.Client.IDeviceCatalog;
-import Model.Repair.IRepairCatalog;
-import Model.Repair.IRepairPlan;
+import Model.Client.*;
+import Model.Repair.*;
 import Model.Worker.*;
 
-import java.time.LocalTime;
 import java.time.Month;
 import java.time.Year;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 
 public class SGCR implements ISGCR{
