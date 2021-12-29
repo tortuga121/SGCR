@@ -3,6 +3,7 @@ package Model.Client;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Queue;
 import Exception.*;
 
@@ -41,4 +42,11 @@ public class DeviceCatalog implements IDeviceCatalog {
         return devices.containsKey(regCode);
     }
 
+    public void checkforAbandonedDevices() {
+        for(Map.Entry<Integer,LocalDate> e : toPickup.entrySet())
+            if(e.getValue().compareTo(LocalDate.now()) > 0) {
+                abandonedDevices.add(e.getKey());
+                toPickup.remove(e.getKey());
+            }
+    }
 }
