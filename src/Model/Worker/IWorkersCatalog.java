@@ -10,7 +10,7 @@ public interface IWorkersCatalog {
     boolean existsTechnician(int id);
     Map<Integer, Integer> num_rep_technicians();
     boolean existsWorker(int id);
-     boolean existsManager(int id);
+    boolean existsManager(int id);
     boolean login(int id, String password);
     boolean existsReceptionist(int id);
 }
