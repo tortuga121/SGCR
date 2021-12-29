@@ -26,7 +26,7 @@ public class DeviceCatalog implements IDeviceCatalog {
     }
     public void addToPickup(int regCode) throws DeviceNotFoundException {
         if(existsDevice(regCode))
-            toPickup.put(regCode,LocalDate.now());
+            toPickup.put(regCode,LocalDate.now().plusDays(90));
         else
             throw new DeviceNotFoundException("" + regCode);
     }

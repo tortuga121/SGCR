@@ -11,4 +11,5 @@ public interface IRepairPlan extends Comparable{
     IRepairPlan clone();
     int repairNext(double cost, double time) throws NoMoreStepsExecption;
     double getTimeofRepair();
+    LocalDateTime getDeadline();
 }

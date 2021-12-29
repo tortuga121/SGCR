@@ -10,6 +10,11 @@ public class RepairPlan implements IRepairPlan {
     private int regCode;
     private String generalDescription;
     private ArrayList<Stage> stages;
+    private LocalDateTime deadline;
+
+    public LocalDateTime getDeadline() {
+        return deadline;
+    }
 
     public RepairPlan(int regCode, String generalDescription, ArrayList<Stage> stages) {
         this.regCode = regCode;
@@ -78,12 +83,9 @@ public class RepairPlan implements IRepairPlan {
     public double getTimeofRepair() {
        return stages.stream().mapToDouble(Step::getTime).sum();
     }
-    //TODO
     @Override
     public int compareTo(Object o) {
         RepairPlan rp = (RepairPlan) o;
-        return getTimeofRepair() - rp.getTimeofRepair() == 0 ?
-                getRegCode() - rp.getRegCode() :
-                (int) (getTimeofRepair() - rp.getTimeofRepair());
+        return this.getDeadline().compareTo(rp.getDeadline());
     }
 }

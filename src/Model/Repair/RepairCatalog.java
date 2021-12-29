@@ -1,8 +1,9 @@
 package Model.Repair;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.TreeSet;
+
 
 import Exception.*;
 
@@ -10,7 +11,7 @@ public class RepairCatalog implements IRepairCatalog{
     private HashMap<Integer,IRepairPlan> repairs;
     private HashMap<Integer,IExpressRepair> expressRepairs;
     private TreeSet<Integer> toRepair;
-    private HashMap<Integer, LocalDate> toApprove;
+    private HashMap<Integer, LocalDateTime> toApprove;
 
     @Override
     public int mostUrgentRepair() throws NoRepairException{
@@ -32,7 +33,7 @@ public class RepairCatalog implements IRepairCatalog{
 
     public void addRepairPlan(IRepairPlan rp) {
         repairs.put(rp.getRegCode(),rp.clone());
-        toApprove.put(rp.getRegCode(),LocalDate.now());
+        toApprove.put(rp.getRegCode(),LocalDateTime.now().plusDays(30));
     }
     @Override
     public void unaproveBudget(int regCode) throws DeviceNotFoundException {
