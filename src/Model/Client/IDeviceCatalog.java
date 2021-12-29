@@ -6,5 +6,6 @@ public interface IDeviceCatalog {
     void popOldestRequest() throws DeviceNotFoundException;
     IDevice getOldestRequest() throws DeviceNotFoundException;
     boolean existsDevice(int regCode);
+    void checkforAbandonedDevices();
 
 }

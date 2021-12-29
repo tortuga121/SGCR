@@ -2,6 +2,7 @@ package Model.Repair;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.TreeSet;
 
 
@@ -12,6 +13,17 @@ public class RepairCatalog implements IRepairCatalog{
     private HashMap<Integer,IExpressRepair> expressRepairs;
     private TreeSet<Integer> toRepair;
     private HashMap<Integer, LocalDateTime> toApprove;
+
+    void checkForOutdated() {
+        for(Map.Entry<Integer,LocalDateTime>  e: toApprove.entrySet()) {
+            if(e.getValue().compareTo(LocalDateTime.now()) > 0)
+                toApprove.remove(e.getKey());
+        }
+        for(int id : toRepair) {
+            if(repairs.get(id).getDeadline().compareTo(LocalDateTime.now()) > 0)
+                toRepair.remove(id);
+        }
+    }
 
     @Override
     public int mostUrgentRepair() throws NoRepairException{
@@ -48,6 +60,5 @@ public class RepairCatalog implements IRepairCatalog{
             throw new DeviceNotFoundException("Repair plan with" + regCode + "registration code does not exist");
         toRepair.add(regCode);
     }
-
 
 }
