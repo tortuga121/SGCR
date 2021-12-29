@@ -1,10 +1,9 @@
-package View;
+package View.Technician;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.Objects;
 
-public class ViewRepairPlan extends JFrame{
+public class ViewRepairPlanSugestion extends JFrame{
     private JPanel mainPanel;
     private JLabel deviceID;
     private JTextField deviceIDtxt;
@@ -19,7 +18,7 @@ public class ViewRepairPlan extends JFrame{
     private JList<String> repairStepsList;
     private DefaultListModel<String> listModel;
 
-    public ViewRepairPlan() {
+    public ViewRepairPlanSugestion() {
         super("Repair Plan Sugestion Form");
         listModel = new DefaultListModel<>();
         this.addItem.addActionListener(e -> {

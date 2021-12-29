@@ -1,4 +1,4 @@
 package View.Technician;
 
-public class TechnicianView {
+public class TechnicianView implements ITechnicianView{
 }
