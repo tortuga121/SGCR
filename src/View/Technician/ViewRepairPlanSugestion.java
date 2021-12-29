@@ -53,6 +53,9 @@ public class ViewRepairPlanSugestion extends JFrame{
         this.pack();
     }
 
+    //TODO meter as cenas das etapas e passos e distinção entre feitos ou não
+    //TODO ideia: meter dentro dum plano, tabela dos feitos e dos por fazer com botoes para editar
+
     public JTextField getDeviceID() {
         return deviceIDtxt;
     }

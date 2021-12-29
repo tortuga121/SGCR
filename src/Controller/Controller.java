@@ -7,6 +7,8 @@ import Model.Worker.*;
 import View.*;
 import View.Login.ViewLogin;
 import View.Receptionist.*;
+import View.Technician.ITechnicianView;
+import View.Technician.TechnicianView;
 
 public class Controller implements IController{
     IView view;
@@ -51,11 +53,18 @@ public class Controller implements IController{
         });
     }
 
-    public void execManager() {
-
+    public void execTechnician() {
+        ITechnicianView vt = new TechnicianView();
+        vt.getOptions().setVisible(true);
+        vt.getOptions().getEditPlan().addActionListener(e -> {
+            //TODO forms edit repair plan
+        });
+        vt.getOptions().getSugestPlan().addActionListener(e -> {
+            vt.getPlanSugestion().setVisible(true);
+        });
     }
 
-    public void execTechnician() {
+    public void execManager() {
 
     }
 }
