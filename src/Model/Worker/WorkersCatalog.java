@@ -1,6 +1,7 @@
 package Model.Worker;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 import Exception.*;
 
@@ -9,7 +10,13 @@ public class WorkersCatalog implements IWorkersCatalog{
     private HashMap<Integer,IWorker> workers;
     private HashMap<Integer,String> logins;
 
-
+    public Map<Integer, Integer> num_rep_technicians() {
+      return workers.values().stream()
+              .filter(e -> e.getClass() == Technician.class)
+              .collect(Collectors.toMap
+                      (IWorker::getId,
+                       e -> ((ITechnician) workers.get(e)).getTotalParticipations()));
+    }
     public boolean login(int id, String password) {
         return logins.containsKey(id) && logins.get(id).equals(password);
     }

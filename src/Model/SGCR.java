@@ -11,6 +11,8 @@ import Model.Worker.Technician;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class SGCR implements ISGCR{
     private IWorkersCatalog wcat;
@@ -48,12 +50,8 @@ public class SGCR implements ISGCR{
     }
 
     @Override
-    public void evaluateCenterFunctioning(ArrayList<Technician> technicians, ArrayList<Receptionist> receptionists) throws WorkerDoesNotExist{
-        for (Technician t: technicians) {
-            t.getId();
-
-
-        }
+    public Map<Integer,Integer> evaluateCenterFunctioning(){
+        return wcat.num_rep_technicians();
     }
 
     public int getTechPart(int techId) throws WorkerDoesNotExist {
