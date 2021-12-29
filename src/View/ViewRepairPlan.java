@@ -46,7 +46,7 @@ public class ViewRepairPlan extends JFrame{
             }
         });
 
-        this.mainPanel.setPreferredSize(new Dimension(550, 500));
+        this.mainPanel.setPreferredSize(new Dimension(650, 500));
         this.mainPanel.revalidate();
         this.mainPanel.repaint();
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
