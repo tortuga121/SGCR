@@ -1,6 +1,9 @@
 import View.*;
 import View.Login.ViewLogin;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
         /*
@@ -29,6 +32,19 @@ public class Main {
         vrb.getSaveButton().addActionListener(e -> {
             String id = vrb.getDeviceID().getText();
             System.out.println("Device ID: " + id);
+        });
+        ViewRepairPlan vrp = new ViewRepairPlan();
+        vrp.setVisible(true);
+        vrp.getSaveButton().addActionListener(e -> {
+            String idd = vrp.getDeviceID().getText();
+            String prb = vrp.getProblemDescription().getText();
+            List<String> l = new ArrayList<>();
+            for (int i = 0; i < vrp.getRepairStepsList().getSize(); i++)
+                l.add(vrp.getRepairStepsList().get(i));
+            System.out.println("ID Device: " + idd);
+            System.out.println("Problem: " + prb);
+            for (int i = 0; i < vrp.getRepairStepsList().getSize(); i++)
+                System.out.println("Passo " + i + ": " + l.get(i));
         });*/
     }
 }
