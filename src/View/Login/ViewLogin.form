@@ -22,18 +22,10 @@
         <children>
           <component id="abed1" class="javax.swing.JLabel" binding="username">
             <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Username: "/>
-            </properties>
-          </component>
-          <component id="b55ff" class="javax.swing.JLabel" binding="password">
-            <constraints>
-              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <text value="Password:"/>
+              <text value=" ID: "/>
             </properties>
           </component>
           <component id="78f97" class="javax.swing.JTextField" binding="userTextField">
@@ -54,6 +46,14 @@
             </constraints>
             <properties>
               <text value=""/>
+            </properties>
+          </component>
+          <component id="b55ff" class="javax.swing.JLabel" binding="password">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value=" Password:"/>
             </properties>
           </component>
         </children>

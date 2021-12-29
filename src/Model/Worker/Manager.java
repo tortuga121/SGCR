@@ -4,7 +4,7 @@ import java.time.Month;
 import java.time.Year;
 import java.util.HashMap;
 
-public class Manager extends Worker{
+public class Manager extends Worker implements IManager {
     HashMap<Year, HashMap<Month ,String>> month_eval;
 
     public void addEval(Year y, Month m , String eval) {

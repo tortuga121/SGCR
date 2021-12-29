@@ -1,4 +1,4 @@
 package View.Manager;
 
-public class ManagerView {
+public class ManagerView implements IManagerView{
 }

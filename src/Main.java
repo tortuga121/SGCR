@@ -1,3 +1,4 @@
+import Controller.*;
 import View.*;
 import View.Login.ViewLogin;
 
@@ -14,7 +15,8 @@ public class Main {
             String pass = login.getPassField().getText();
             System.out.println("Username: " + user);
             System.out.println("Password: " + pass);
-        });
+        });*/
+        /*
         ViewBudgetRequest vbr = new ViewBudgetRequest();
         vbr.setVisible(true);
         vbr.getSaveButton().addActionListener(e -> {
@@ -27,12 +29,14 @@ public class Main {
             System.out.println("Client NIF: " + nif);
             System.out.println("Problem: " + prb);
         });
+        /*
         ViewRefuseBudget vrb = new ViewRefuseBudget();
         vrb.setVisible(true);
         vrb.getSaveButton().addActionListener(e -> {
             String id = vrb.getDeviceID().getText();
             System.out.println("Device ID: " + id);
-        });
+        });*/
+        /*
         ViewRepairPlan vrp = new ViewRepairPlan();
         vrp.setVisible(true);
         vrp.getSaveButton().addActionListener(e -> {
@@ -46,5 +50,7 @@ public class Main {
             for (int i = 0; i < vrp.getRepairStepsList().getSize(); i++)
                 System.out.println("Passo " + i + ": " + l.get(i));
         });*/
+        IController c = new Controller();
+        c.exec();
     }
 }

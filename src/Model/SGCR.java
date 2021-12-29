@@ -13,6 +13,7 @@ public class SGCR implements ISGCR{
     private IDeviceCatalog dcat;
     private IRepairCatalog rcat;
 
+    @Override
     public void addBudgetRequest(IDevice device, int recepcionistId) throws WorkerDoesNotExist, InvalidRegistrationCodeException {
         dcat.addRequest(device);
         wcat.incRecepServiceCount(recepcionistId);
@@ -60,6 +61,18 @@ public class SGCR implements ISGCR{
         rcat.addExpressrepair(type,regcode,desrp);
         wcat.updateTechicianStep(regcode,-1,techId);
 
+    }
+
+    @Override
+    public Class<?> getWorkerType(int id) throws WorkerDoesNotExist {
+        //TODO saber tipo de worker
+        return null;
+    }
+
+    @Override
+    public boolean login(int id, String pass) throws WorkerDoesNotExist {
+        //TODO credenciais validas
+        return false;
     }
 
 }

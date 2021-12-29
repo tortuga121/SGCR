@@ -16,4 +16,7 @@ public interface ISGCR {
     Map<Integer,Integer> evaluateCenterFunctioning () throws WorkerDoesNotExist;
     void makeMonthEval(Year y, Month m , String eval, int manegerId) throws WorkerDoesNotExist;
     void makeExpressRepair(String type, int regcode, String desrp, int techId) throws DeviceNotFoundException, WorkerDoesNotExist;
+
+    Class<?> getWorkerType(int id) throws WorkerDoesNotExist;
+    boolean login(int id, String pass) throws WorkerDoesNotExist;
 }

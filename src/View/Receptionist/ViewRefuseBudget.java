@@ -1,4 +1,4 @@
-package View;
+package View.Receptionist;
 
 import javax.swing.*;
 import java.awt.*;
