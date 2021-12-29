@@ -1,4 +1,4 @@
-import View.ViewBudgetRequest;
+import View.*;
 import View.Login.ViewLogin;
 
 public class Main {
@@ -23,7 +23,12 @@ public class Main {
             System.out.println("ID Receptionist: " + idr);
             System.out.println("Client NIF: " + nif);
             System.out.println("Problem: " + prb);
+        });
+        ViewRefuseBudget vrb = new ViewRefuseBudget();
+        vrb.setVisible(true);
+        vrb.getSaveButton().addActionListener(e -> {
+            String id = vrb.getDeviceID().getText();
+            System.out.println("Device ID: " + id);
         });*/
-
     }
 }
