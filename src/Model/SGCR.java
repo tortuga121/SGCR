@@ -4,12 +4,11 @@ import Model.Client.IDevice;
 import Model.Client.IDeviceCatalog;
 import Model.Repair.IRepairCatalog;
 import Model.Repair.IRepairPlan;
-import Model.Worker.ITechnician;
-import Model.Worker.IWorkersCatalog;
-import Model.Worker.Receptionist;
-import Model.Worker.Technician;
+import Model.Worker.*;
 
 import java.time.LocalTime;
+import java.time.Month;
+import java.time.Year;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -57,6 +56,12 @@ public class SGCR implements ISGCR{
     public int getTechPart(int techId) throws WorkerDoesNotExist {
         if(!wcat.existsTechnician(techId)) throw new WorkerDoesNotExist("Technician: " + techId + "does not exist");
         return ((ITechnician) wcat.getWorker(techId)).getTotalParticipations();
+    }
+
+    @Override
+    public void makeMonthEval(Year y, Month m, String eval, int managerId) throws WorkerDoesNotExist {
+        if(!wcat.existsManager(managerId)) throw new WorkerDoesNotExist("Manager: " + managerId + "does not exist");
+        ((IManager) wcat.getWorker(managerId)).addEval(y,m,eval);
     }
 
 }
