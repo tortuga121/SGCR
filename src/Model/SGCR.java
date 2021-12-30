@@ -118,7 +118,7 @@ public class SGCR implements ISGCR{
     }
 
     @Override
-    public Set<Integer> getClientDevices(String nif) {
+    public Set<Integer> getClientDevices(String nif) throws DeviceNotFoundException {
         return dcat.getdevicesbyNif(nif);
     }
 

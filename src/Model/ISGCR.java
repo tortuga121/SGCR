@@ -25,5 +25,5 @@ public interface ISGCR {
     void checkForDealines();
     void deliverDevice(int recepId) throws WorkerDoesNotExist;
     void addWorker(String name, int id, Class<?> c, String password);
-    Set<Integer> getClientDevices(String nif);
+    Set<Integer> getClientDevices(String nif) throws DeviceNotFoundException;
 }
