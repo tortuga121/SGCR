@@ -1,6 +1,6 @@
 package Model.Worker;
 
-import Model.Client.IDevice;
+import Model.Devices.IDevice;
 
 public interface IReceptionist extends IWorker{
     int totalDeliveries();

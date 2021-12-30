@@ -1,4 +1,4 @@
-package Model.Client;
+package Model.Devices;
 
 import java.time.LocalDateTime;
 

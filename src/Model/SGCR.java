@@ -1,6 +1,6 @@
 package Model;
 import Exception.*;
-import Model.Client.*;
+import Model.Devices.*;
 import Model.Repair.*;
 import Model.Worker.*;
 

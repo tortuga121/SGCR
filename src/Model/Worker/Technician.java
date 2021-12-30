@@ -18,10 +18,9 @@ public class Technician extends Worker implements ITechnician{
             participations.put(regCode, new HashSet<>());
         participations.get(regCode).add(stage);
     }
-    //TODO
     @Override
     public int getTotalParticipations() {
-        return 0;
+        return participations.size();
     }
 
     @Override
