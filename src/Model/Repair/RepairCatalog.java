@@ -18,8 +18,6 @@ public class RepairCatalog implements IRepairCatalog{
         expressRepairs = new ArrayList<>();
         toRepair = new TreeSet<>();
         toApprove = new HashMap<>();
-        repairs.put(3,null);
-        toApprove.put(3,LocalDateTime.now().plusDays(2));
 
     }
 
