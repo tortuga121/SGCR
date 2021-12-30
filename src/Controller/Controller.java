@@ -6,16 +6,15 @@ import Model.SGCR;
 import Model.Worker.*;
 import View.*;
 import View.Login.VLogin;
-import View.Manager.IVManager;
 import View.Manager.VManager;
 import View.Receptionist.*;
-import View.Technician.IVTechnician;
 import View.Technician.VTechnician;
+
+import java.time.LocalDate;
 
 public class Controller implements IController{
     IView view;
     ISGCR sgcr;
-
 
     public Controller() {
         view = new View();
@@ -47,18 +46,18 @@ public class Controller implements IController{
     }
 
     public void execReceptionist() {
-        IVReceptionist vr = new VReceptionist();
+        VReceptionist vr = new VReceptionist();
         vr.getReceptionistOptions().setVisible(true);
         vr.getReceptionistOptions().getRequestBudget().addActionListener(e -> {
             vr.getRequestBudget().setVisible(true);
         });
         vr.getReceptionistOptions().getRefuseBudget().addActionListener(e -> {
-            vr.getRefuseBudget().setVisible(true);
+            execRefuseBudget();
         });
     }
 
     public void execTechnician() {
-        IVTechnician vt = new VTechnician();
+        VTechnician vt = new VTechnician();
         vt.getOptions().setVisible(true);
         vt.getOptions().getEditPlan().addActionListener(e -> {
             //TODO forms edit repair plan
@@ -69,7 +68,21 @@ public class Controller implements IController{
     }
 
     public void execManager() {
-        IVManager vm = new VManager();
+        VManager vm = new VManager();
         //TODO
+    }
+
+    public void execRefuseBudget() {
+        VRefuseBudget vrb = view.getReceptionist().getRefuseBudget();
+        vrb.setVisible(true);
+        vrb.getSaveButton().addActionListener(e -> {
+            try {
+                int id = Integer.parseInt(vrb.getDeviceID().getText());
+                LocalDate deadline = sgcr.refuseBudget(id);
+                view.showPopUpMsg("Reparação cancelada.\nTem até " + deadline.toString() + " para levantar o seu equipamento.");
+            } catch (NumberFormatException | DeviceNotFoundException | WorkerDoesNotExist ex) {
+                view.showPopUpMsg("Equipamento não existe");
+            }
+        });
     }
 }

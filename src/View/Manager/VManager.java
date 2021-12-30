@@ -1,4 +1,4 @@
 package View.Manager;
 
-public class VManager implements IVManager {
+public class VManager {
 }

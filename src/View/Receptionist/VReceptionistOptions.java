@@ -3,13 +3,13 @@ package View.Receptionist;
 import javax.swing.*;
 import java.awt.*;
 
-public class ViewReceptionistOptions extends JFrame {
+public class VReceptionistOptions extends JFrame {
     private JPanel mainPanel;
     private JButton refuseBudget;
     private JButton requestBudget;
     private JLabel optionsLabel;
 
-    public ViewReceptionistOptions() {
+    public VReceptionistOptions() {
         super("Receptionist Option Menu");
         this.mainPanel.setPreferredSize(new Dimension(500, 400));
         this.mainPanel.revalidate();

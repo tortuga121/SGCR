@@ -2,10 +2,9 @@ package Model.Devices;
 
 import java.time.LocalDateTime;
 
-public interface IDevice extends Comparable {
+public interface IDevice {
     int getRegCode();
     String getNifOwner();
     String getDescription();
-    LocalDateTime getdate();
     IDevice clone();
 }
