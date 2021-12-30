@@ -76,9 +76,10 @@ public class SGCR implements ISGCR{
     }
 
     @Override
-    public void makeExpressRepair(String type, String desrp, int techId) throws WorkerDoesNotExist {
+    public void makeExpressRepair(String type, String desrp, int techId, int recepId) throws WorkerDoesNotExist {
         rcat.addExpressrepair(type,desrp);
         wcat.updateTechicianStep(-1,-1,techId);
+        wcat.incRecepDelivCount(recepId);
     }
 
     @Override
