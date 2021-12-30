@@ -13,6 +13,11 @@ public class Technician extends Worker implements ITechnician{
         participations = new HashMap<>();
     }
 
+    @Override
+    public Worker clone() { //TODO
+        return null;
+    }
+
     public void addParticipation(int regCode, int stage) {
         if(!participations.containsKey(regCode))
             participations.put(regCode, new HashSet<>());

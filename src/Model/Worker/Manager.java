@@ -14,4 +14,9 @@ public class Manager extends Worker implements IManager {
     public Manager(String name, int id) {
         super(name, id);
     }
+
+    @Override
+    public Worker clone() { //TODO
+        return null;
+    }
 }
