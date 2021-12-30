@@ -1,10 +1,7 @@
 package Model.Repair;
 
 import java.time.LocalDateTime;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.TreeSet;
+import java.util.*;
 import java.util.stream.Collectors;
 
 
@@ -12,13 +9,13 @@ import Exception.*;
 
 public class RepairCatalog implements IRepairCatalog{
     private HashMap<Integer,IRepairPlan> repairs;
-    private HashSet<IExpressRepair> expressRepairs;
+    private ArrayList<IExpressRepair> expressRepairs;
     private TreeSet<Integer> toRepair;
     private HashMap<Integer, LocalDateTime> toApprove;
 
     public RepairCatalog() {
         repairs = new HashMap<>();
-        expressRepairs = new HashSet<>();
+        expressRepairs = new ArrayList<>();
         toRepair = new TreeSet<>();
         toApprove = new HashMap<>();
         repairs.put(3,null);
