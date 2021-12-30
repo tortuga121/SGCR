@@ -3,13 +3,13 @@ package View.Receptionist;
 import javax.swing.*;
 import java.awt.*;
 
-public class VDeviceByClient extends JFrame{
+public class VClientNIF extends JFrame{
     private JPanel mainPanel;
     private JTextField nifCliente;
     private JButton saveButton;
     private JLabel nifLabel;
 
-    public VDeviceByClient() {
+    public VClientNIF() {
         super("Refuse Budget Form");
         this.mainPanel.setPreferredSize(new Dimension(270, 80));
         this.mainPanel.revalidate();

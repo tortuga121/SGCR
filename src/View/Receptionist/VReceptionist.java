@@ -2,11 +2,12 @@ package View.Receptionist;
 
 public class VReceptionist {
     private VBudgetRequest requestBudget;
-    private VDeviceByClient deviceByClient;
+    private VClientNIF deviceByClient;
     private VReceptionistOptions options;
+    private VExpressRequest expressRequest;
 
     public VReceptionist() {
-        this.deviceByClient = new VDeviceByClient();
+        this.deviceByClient = new VClientNIF();
         this.requestBudget = new VBudgetRequest();
         this.options = new VReceptionistOptions();
     }
@@ -15,11 +16,15 @@ public class VReceptionist {
         return requestBudget;
     }
 
-    public VDeviceByClient getDeviceByClient() {
+    public VClientNIF getClientNIF() {
         return deviceByClient;
     }
 
     public VReceptionistOptions getReceptionistOptions() {
         return options;
+    }
+
+    public VExpressRequest getExpressRequest() {
+        return expressRequest;
     }
 }

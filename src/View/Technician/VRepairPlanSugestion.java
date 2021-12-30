@@ -2,6 +2,9 @@ package View.Technician;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class VRepairPlanSugestion extends JFrame{
     private JPanel mainPanel;
@@ -23,6 +26,7 @@ public class VRepairPlanSugestion extends JFrame{
     private JButton editStage;
     private JTextField selecioneNaListaATextField;
     private DefaultListModel<String> listModel;
+    private Map<String, List<String>> stages;
 
     public VRepairPlanSugestion() {
         super("Repair Plan Sugestion Form");
@@ -32,6 +36,7 @@ public class VRepairPlanSugestion extends JFrame{
                 addToList.setText("escreva aqui");
             } else {
                 listModel.addElement(addToList.getText());
+                stages.put(addToList.getText(), new ArrayList<>());
                 repairStepsList.setModel(listModel);
                 addToList.setText("");
             }
@@ -44,6 +49,7 @@ public class VRepairPlanSugestion extends JFrame{
                 for (int i = 0; i < listModel.getSize(); i++){
                     if (listModel.getElementAt(i).equals(removeFromList.getText())) {
                         listModel.removeElementAt(i);
+                        stages.remove(removeFromList.getText());
                         repairStepsList.setModel(listModel);
                         removeFromList.setText("");
                     }

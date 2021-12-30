@@ -34,7 +34,7 @@ public class Main {
 
         for(IDevice d : arr) sgcr.addBudgetRequest(d,129);
         sgcr.sugestRepairPlan(new RepairPlan(0,"arranja", new ArrayList<>(),200));
-
+        sgcr.refuseBudget(0);
         IController c = new Controller(sgcr);
         c.exec();
         System.out.println("acabou");
