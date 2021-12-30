@@ -14,6 +14,7 @@ import View.Receptionist.*;
 import View.Technician.VTechnician;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -51,7 +52,7 @@ public class Controller implements IController{
     }
 
     public void execReceptionist(int workerID) {
-        VReceptionist vr = new VReceptionist();
+        VReceptionist vr = this.view.getReceptionist();
         vr.getReceptionistOptions().setVisible(true);
         vr.getReceptionistOptions().getRequestBudget().addActionListener(e -> {
             execRequestBudget(workerID);
@@ -62,11 +63,20 @@ public class Controller implements IController{
         vr.getReceptionistOptions().getAproveBudget().addActionListener(e -> {
             execEditBudget(true);
         });
-
+        vr.getReceptionistOptions().getExpressRequestButton().addActionListener(e -> {
+            execExpressRequest();
+        });
+        vr.getReceptionistOptions().getPickupButton().addActionListener(e -> {
+            execPickUp(workerID);
+        });
+        vr.getReceptionistOptions().getUpdateOutdatedButton().addActionListener(e -> {
+            sgcr.checkForDealines();
+            view.showPopUpMsg("Pedidos expirados atualizados.");
+        });
     }
 
     public void execTechnician(int workerID) {
-        VTechnician vt = new VTechnician();
+        VTechnician vt = this.view.getTechnician();
         vt.getOptions().setVisible(true);
         vt.getOptions().getEditPlan().addActionListener(e -> {
             //TODO forms edit repair plan
@@ -77,20 +87,20 @@ public class Controller implements IController{
     }
 
     public void execManager(int workerID) {
-        VManager vm = new VManager();
+        VManager vm = this.view.getManager();
         //TODO
     }
 
     public void execEditBudget(boolean aprove) {
-        VDeviceByClient vrb = view.getReceptionist().getDeviceByClient();
+        VClientNIF vrb = view.getReceptionist().getClientNIF();
         vrb.setVisible(true);
         vrb.getSaveButton().addActionListener(e -> {
             String nif = vrb.getNIF().getText();
+            vrb.getNIF().setText("");
             try {
                 Set<Integer> regCodes = sgcr.getClientDevices(nif);
                 List<String> l = new ArrayList<>();
                 for (Integer i : regCodes) {
-                    String name = "0";
                     String s = i + " - Código de registo; " + sgcr.getDevice(i).getName() + " - Nome equipamento.";
                     l.add(s);
                 }
@@ -128,7 +138,9 @@ public class Controller implements IController{
                                 view.showPopUpMsg(ex.getMessage());
                             }
                         });
-                    } catch (DeviceNotFoundException ignored) {}
+                    } catch (DeviceNotFoundException ex) {
+                        view.showPopUpMsg(ex.getMessage());
+                    }
                 });
             } catch (DeviceNotFoundException ex) {
                 view.showPopUpMsg(ex.getMessage());
@@ -154,5 +166,55 @@ public class Controller implements IController{
                 view.showPopUpMsg(ex.getMessage());
             }
         });
+    }
+
+    private void execPickUp(int workerID) {
+        VClientNIF clientNIF = this.view.getReceptionist().getClientNIF();
+        clientNIF.setVisible(true);
+        clientNIF.getSaveButton().addActionListener(e -> {
+            String nif = clientNIF.getNIF().getText();
+            clientNIF.getNIF().setText("");
+            try {
+                Set<Integer> regCodes = sgcr.getDeliveredDevicesbyNif(nif);
+                List<String> l = new ArrayList<>();
+                for (Integer i : regCodes) {
+                    String s = i + " - Código de registo; " + sgcr.getDevice(i).getName() + " - Nome equipamento.";
+                    l.add(s);
+                }
+                VDeviceList vdl = new VDeviceList(nif, l);
+                vdl.setVisible(true);
+                vdl.getSelectButton().addActionListener(e1 -> {
+                    String selectedValue = vdl.getDeviceList().getSelectedValue();
+                    String regCodeStr = selectedValue.split(" -")[0];
+                    int regCode = Integer.parseInt(regCodeStr);
+                    try {
+                        Device device = (Device) sgcr.getDevice(regCode);
+                        VDevice vDevice = new VDevice(device);
+                        vDevice.setVisible(true);
+                        view.showPopUpMsg("Para levantar o equipamento clique em confirmar, caso contrário feche a janela.");
+                        vDevice.getDoneButton().addActionListener(e2 -> {
+                            try {
+                                this.sgcr.devicePickup(regCode, workerID);
+                                vDevice.dispose();
+                                vdl.dispose();
+                                vDevice.dispose();
+                                clientNIF.dispose();
+                                view.showPopUpMsg("Equipamento levantado.");
+                            } catch (DeviceNotFoundException | WorkerDoesNotExist ex) {
+                                view.showPopUpMsg(ex.getMessage());
+                            }
+                        });
+                    } catch (DeviceNotFoundException ex) {
+                        view.showPopUpMsg(ex.getMessage());
+                    }
+                });
+            } catch (DeviceNotFoundException ex) {
+                view.showPopUpMsg(ex.getMessage());
+            }
+        });
+    }
+
+    private void execExpressRequest() {
+
     }
 }

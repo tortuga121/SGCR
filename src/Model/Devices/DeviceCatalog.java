@@ -81,7 +81,7 @@ public class DeviceCatalog implements IDeviceCatalog {
 
     @Override
     public Set<Integer> getDeliveredDevicesbyNif(String nif) throws DeviceNotFoundException {
-        if(!nifs.containsKey(nif)) throw new DeviceNotFoundException("no Devices with nif: " + nif);
+        if(!nifs.containsKey(nif)) throw new DeviceNotFoundException("no Devices to deliver with nif: " + nif);
        return nifs.get(nif).stream().filter(id -> toPickup.containsKey(id)).collect(Collectors.toSet());
     }
 
