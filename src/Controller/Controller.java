@@ -6,6 +6,8 @@ import Model.SGCR;
 import Model.Worker.*;
 import View.*;
 import View.Login.ViewLogin;
+import View.Manager.IManagerView;
+import View.Manager.ManagerView;
 import View.Receptionist.*;
 import View.Technician.ITechnicianView;
 import View.Technician.TechnicianView;
@@ -65,6 +67,7 @@ public class Controller implements IController{
     }
 
     public void execManager() {
-
+        IManagerView vm = new ManagerView();
+        //TODO
     }
 }
