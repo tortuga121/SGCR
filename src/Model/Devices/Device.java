@@ -6,6 +6,7 @@ public class Device implements IDevice {
     private final int regCode;
     private String name;
     private final String nifOwner;
+
     private final String problemDescription;
 
     public Device(int regCode, String nifOwner, String problemDescription, String name) {
@@ -34,6 +35,11 @@ public class Device implements IDevice {
     @Override
     public String getDescription() {
         return problemDescription;
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 
     @Override

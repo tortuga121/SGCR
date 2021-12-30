@@ -1,5 +1,7 @@
 package View.Device;
 
+import Model.Devices.Device;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -11,12 +13,14 @@ public class VDevice extends JFrame {
     private JTextPane probDescriptionTxt;
     private JLabel nifOwner;
     private JLabel probDescription;
+    private JTextField nameTxt;
 
-    public VDevice(String regCode, String nif, String description) {
+    public VDevice(Device d) {
         super("Device");
-        this.regCodeTxt.setText(regCode);
-        this.nifOwnerTxt.setText(nif);
-        this.probDescriptionTxt.setText(description);
+        this.regCodeTxt.setText(Integer.toString(d.getRegCode()));
+        this.nifOwnerTxt.setText(d.getNifOwner());
+        this.probDescriptionTxt.setText(d.getDescription());
+        this.nameTxt.setText(d.getName());
         this.mainPanel.setPreferredSize(new Dimension(400, 200));
         this.mainPanel.revalidate();
         this.mainPanel.repaint();

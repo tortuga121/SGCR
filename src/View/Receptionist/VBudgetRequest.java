@@ -7,7 +7,6 @@ public class VBudgetRequest extends JFrame{
     private JPanel mainPanel;
     private JTextField devideIDtxt;
     private JTextField clientNIFtxt;
-    private JLabel devideID;
     private JLabel clientNIF;
     private JTextArea problemDescriptionTxt;
     private JButton saveButton;

@@ -7,6 +7,8 @@ import Model.Devices.*;
 import Model.Repair.*;
 import Model.Worker.*;
 import Exception.*;
+import View.Device.VDevice;
+import View.View;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;

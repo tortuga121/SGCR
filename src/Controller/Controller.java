@@ -52,7 +52,6 @@ public class Controller implements IController{
         vr.getReceptionistOptions().setVisible(true);
         vr.getReceptionistOptions().getRequestBudget().addActionListener(e -> {
             execRequestBudget(workerID);
-            vr.getRequestBudget().setVisible(true);
         });
         vr.getReceptionistOptions().getRefuseBudget().addActionListener(e -> {
             execRefuseBudget();
@@ -95,10 +94,11 @@ public class Controller implements IController{
         vbr.setVisible(true);
         vbr.getSaveButton().addActionListener(e -> {
             try {
-                int deviceID = Integer.parseInt(vbr.getDeviceID().getText());
                 String nif = vbr.getClientNIF().getText();
+                vbr.getClientNIF().setText("");
                 String pd = vbr.getProblemDescription().getText();
-                sgcr.addBudgetRequest(new Device(deviceID, nif, pd, LocalDateTime.now()), workerID);
+                vbr.getProblemDescription().setText("");
+                sgcr.addBudgetRequest(new Device( 0 /*TODO*/, nif, pd,"merdas"), workerID);
                 vbr.dispose();
                 view.showPopUpMsg("Pedido de orçamento adicionado.");
             } catch (NumberFormatException | WorkerDoesNotExist | InvalidRegistrationCodeException ex) {
