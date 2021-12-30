@@ -1,18 +1,19 @@
 package View;
 
+import View.Device.VDevice;
 import View.Login.VLogin;
-import View.Manager.IVManager;
-import View.Receptionist.IVReceptionist;
+import View.Manager.VManager;
 import View.Receptionist.VReceptionist;
-import View.Technician.IVTechnician;
+import View.Technician.VTechnician;
 
 import javax.swing.*;
 
 public class View implements IView {
-    private IVManager manager;
-    private IVReceptionist receptionist;
-    private IVTechnician technician;
+    private VManager manager;
+    private VReceptionist receptionist;
+    private VTechnician technician;
     private VLogin login;
+    private VDevice device;
 
     public View() {
         // this.manager = new ManagerView();
@@ -25,15 +26,15 @@ public class View implements IView {
         return login;
     }
 
-    public IVManager getManager() {
+    public VManager getManager() {
         return manager;
     }
 
-    public IVReceptionist getReceptionist() {
+    public VReceptionist getReceptionist() {
         return receptionist;
     }
 
-    public IVTechnician getTechnician() {
+    public VTechnician getTechnician() {
         return technician;
     }
 

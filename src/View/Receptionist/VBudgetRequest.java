@@ -3,7 +3,7 @@ package View.Receptionist;
 import javax.swing.*;
 import java.awt.*;
 
-public class ViewBudgetRequest extends JFrame{
+public class VBudgetRequest extends JFrame{
     private JPanel mainPanel;
     private JTextField devideIDtxt;
     private JTextField receptionistIDtxt;
@@ -15,7 +15,7 @@ public class ViewBudgetRequest extends JFrame{
     private JButton saveButton;
     private JLabel problemDescription;
 
-    public ViewBudgetRequest() {
+    public VBudgetRequest() {
         super("Budget Request Form");
         this.mainPanel.setPreferredSize(new Dimension(500, 400));
         this.mainPanel.revalidate();

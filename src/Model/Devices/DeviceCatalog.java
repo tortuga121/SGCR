@@ -37,7 +37,7 @@ public class DeviceCatalog implements IDeviceCatalog {
         budgetRequest.add(e.getRegCode());
 
 
-        toPickup.put(c.getRegCode(),LocalDate.now().plusDays(2));
+        //toPickup.put(c.getRegCode(),LocalDate.now().plusDays(2));
 
     }
 

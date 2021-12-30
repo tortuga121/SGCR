@@ -1,6 +1,6 @@
 package View.Technician;
 
-public class VTechnician implements IVTechnician {
+public class VTechnician {
     private ViewTechnicianOptions options;
     private ViewRepairPlanSugestion planSugestion;
     private ViewRepairStep repairStep;

@@ -1,25 +1,25 @@
 package View.Receptionist;
 
-public class VReceptionist implements IVReceptionist {
-    private ViewBudgetRequest requestBudget;
-    private ViewRefuseBudget refuseBudget;
-    private ViewReceptionistOptions options;
+public class VReceptionist {
+    private VBudgetRequest requestBudget;
+    private VRefuseBudget refuseBudget;
+    private VReceptionistOptions options;
 
     public VReceptionist() {
-        this.refuseBudget = new ViewRefuseBudget();
-        this.requestBudget = new ViewBudgetRequest();
-        this.options = new ViewReceptionistOptions();
+        this.refuseBudget = new VRefuseBudget();
+        this.requestBudget = new VBudgetRequest();
+        this.options = new VReceptionistOptions();
     }
 
-    public ViewBudgetRequest getRequestBudget() {
+    public VBudgetRequest getRequestBudget() {
         return requestBudget;
     }
 
-    public ViewRefuseBudget getRefuseBudget() {
+    public VRefuseBudget getRefuseBudget() {
         return refuseBudget;
     }
 
-    public ViewReceptionistOptions getReceptionistOptions() {
+    public VReceptionistOptions getReceptionistOptions() {
         return options;
     }
 }
