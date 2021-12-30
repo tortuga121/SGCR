@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import Exception.NoMoreStepsExecption;
+import Exception.NoMoreStepsException;
 
 public class Stage extends Step{
     private ArrayList<Step> steps;
@@ -24,9 +24,9 @@ public class Stage extends Step{
         return steps.size() > 0;
     }
 
-    public void repairStep(double cost, double time) throws NoMoreStepsExecption {
+    public void repairStep(double cost, double time) throws NoMoreStepsException {
         Optional<Step> optionalStep = steps.stream().filter(Step::isUndone).findFirst();
-        if(optionalStep.isEmpty()) throw new NoMoreStepsExecption();
+        if(optionalStep.isEmpty()) throw new NoMoreStepsException();
         Step s = optionalStep.get();
         s.setCost(cost);
         s.setTime(time);

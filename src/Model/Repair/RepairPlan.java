@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import Exception.NoMoreStepsExecption;
+import Exception.NoMoreStepsException;
 
 public class RepairPlan implements IRepairPlan {
     private int regCode;
@@ -59,7 +59,7 @@ public class RepairPlan implements IRepairPlan {
     }
 
     @Override
-    public int repairNext(double cost, double time) throws NoMoreStepsExecption {
+    public int repairNext(double cost, double time) throws NoMoreStepsException {
         Optional<Stage> optionalStage = Optional.empty();
         int i;
         for (i = 0; i < stages.size(); i++) {
@@ -70,7 +70,7 @@ public class RepairPlan implements IRepairPlan {
             }
         }
 
-        if (optionalStage.isEmpty()) throw new NoMoreStepsExecption();
+        if (optionalStage.isEmpty()) throw new NoMoreStepsException();
         Stage s = optionalStage.get();
         if(s.hasSteps()) {
             s.repairStep(cost, time);

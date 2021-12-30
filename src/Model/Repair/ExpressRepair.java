@@ -11,9 +11,12 @@ public class ExpressRepair implements IExpressRepair {
     private static final HashMap<String,Double> expressTypes;
     static {
         expressTypes = new HashMap<>();
-        expressTypes.put("tipo", 1.0);
+        expressTypes.put("substituir ecrã de um telemóvel", 1.0);
+        expressTypes.put("instalar um sistema operativo",2.0);
+        expressTypes.put("formatar um computador",3.0);
+        expressTypes.put("trocar a bateria de um computador",4.0);
+        // adicionar mais exemplos (?)
         // TODO
-        //adicionar mais exemplos
     }
 
     public ExpressRepair(int regCode, String generalDescription, String type) {
