@@ -16,6 +16,12 @@ public class ViewRepairPlanSugestion extends JFrame{
     private JButton removeItem;
     private JTextField removeFromList;
     private JList<String> repairStepsList;
+    private JLabel deadline;
+    private JTextField deadlineTxt;
+    private JLabel planCost;
+    private JTextField planCostTxt;
+    private JButton editStage;
+    private JTextField selecioneNaListaATextField;
     private DefaultListModel<String> listModel;
 
     public ViewRepairPlanSugestion() {
@@ -71,4 +77,14 @@ public class ViewRepairPlanSugestion extends JFrame{
     public JButton getSaveButton() {
         return saveButton;
     }
+
+    public JTextField getPlanCost() {
+        return planCostTxt;
+    }
+
+    public JTextField getDeadline() {
+        return deadlineTxt;
+    }
+
+
 }

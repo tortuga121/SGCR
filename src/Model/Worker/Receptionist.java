@@ -16,6 +16,11 @@ public class Receptionist extends Worker implements IReceptionist {
     }
 
     @Override
+    public Worker clone() { //TODO
+        return null;
+    }
+
+    @Override
     public IDevice budgetRequest(int regCode, String nif, String descr) {
         IDevice dev = new Device(regCode,nif,descr, LocalDateTime.now());
         return dev;

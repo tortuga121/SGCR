@@ -1,6 +1,7 @@
 import Controller.*;
 import View.*;
 import View.Login.ViewLogin;
+import View.Technician.ViewRepairPlanSugestion;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,8 +37,7 @@ public class Main {
             String id = vrb.getDeviceID().getText();
             System.out.println("Device ID: " + id);
         });*/
-        /*
-        ViewRepairPlan vrp = new ViewRepairPlan();
+        /*ViewRepairPlanSugestion vrp = new ViewRepairPlanSugestion();
         vrp.setVisible(true);
         vrp.getSaveButton().addActionListener(e -> {
             String idd = vrp.getDeviceID().getText();
