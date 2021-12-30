@@ -3,7 +3,7 @@ package View.Technician;
 import javax.swing.*;
 import java.awt.*;
 
-public class ViewRepairPlanSugestion extends JFrame{
+public class VRepairPlanSugestion extends JFrame{
     private JPanel mainPanel;
     private JLabel deviceID;
     private JTextField deviceIDtxt;
@@ -24,7 +24,7 @@ public class ViewRepairPlanSugestion extends JFrame{
     private JTextField selecioneNaListaATextField;
     private DefaultListModel<String> listModel;
 
-    public ViewRepairPlanSugestion() {
+    public VRepairPlanSugestion() {
         super("Repair Plan Sugestion Form");
         listModel = new DefaultListModel<>();
         this.addItem.addActionListener(e -> {

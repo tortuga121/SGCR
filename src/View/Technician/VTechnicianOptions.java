@@ -3,13 +3,13 @@ package View.Technician;
 import javax.swing.*;
 import java.awt.*;
 
-public class ViewTechnicianOptions extends JFrame {
+public class VTechnicianOptions extends JFrame {
     private JPanel mainPanel;
     private JLabel options;
     private JButton sugestPlan;
     private JButton editPlan;
 
-    public ViewTechnicianOptions() {
+    public VTechnicianOptions() {
         super("Technician Option Menu");
         this.mainPanel.setPreferredSize(new Dimension(500, 400));
         this.mainPanel.revalidate();

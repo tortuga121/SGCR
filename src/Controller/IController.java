@@ -2,7 +2,7 @@ package Controller;
 
 public interface IController {
     void exec();
-    public void execReceptionist();
-    public void execTechnician();
-    public void execManager();
+    void execReceptionist(int workerID);
+    void execTechnician(int workerID);
+    void execManager(int workerID);
 }

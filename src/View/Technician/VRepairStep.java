@@ -3,7 +3,7 @@ package View.Technician;
 import javax.swing.*;
 import java.awt.*;
 
-public class ViewRepairStep extends JFrame {
+public class VRepairStep extends JFrame {
     private JPanel mainPanel;
     private JTextField deviceIDtxt;
     private JTextField technicianIDtxt;
@@ -14,7 +14,7 @@ public class ViewRepairStep extends JFrame {
     private JLabel repairCost;
     private JLabel timeToRepair;
 
-    public ViewRepairStep() {
+    public VRepairStep() {
         super("Repair Step Form");
         this.mainPanel.setPreferredSize(new Dimension(400, 500));
         this.mainPanel.revalidate();

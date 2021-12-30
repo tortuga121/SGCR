@@ -6,11 +6,9 @@ import java.awt.*;
 public class VBudgetRequest extends JFrame{
     private JPanel mainPanel;
     private JTextField devideIDtxt;
-    private JTextField receptionistIDtxt;
     private JTextField clientNIFtxt;
     private JLabel devideID;
     private JLabel clientNIF;
-    private JLabel receptionistID;
     private JTextArea problemDescriptionTxt;
     private JButton saveButton;
     private JLabel problemDescription;
@@ -25,12 +23,8 @@ public class VBudgetRequest extends JFrame{
         this.pack();
     }
 
-    public JTextField getDevideID() {
+    public JTextField getDeviceID() {
         return devideIDtxt;
-    }
-
-    public JTextField getReceptionistID() {
-        return receptionistIDtxt;
     }
 
     public JTextField getClientNIF() {

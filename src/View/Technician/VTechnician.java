@@ -1,25 +1,25 @@
 package View.Technician;
 
 public class VTechnician {
-    private ViewTechnicianOptions options;
-    private ViewRepairPlanSugestion planSugestion;
-    private ViewRepairStep repairStep;
+    private VTechnicianOptions options;
+    private VRepairPlanSugestion planSugestion;
+    private VRepairStep repairStep;
 
     public VTechnician() {
-        this.options = new ViewTechnicianOptions();
-        this.planSugestion = new ViewRepairPlanSugestion();
-        this.repairStep = new ViewRepairStep();
+        this.options = new VTechnicianOptions();
+        this.planSugestion = new VRepairPlanSugestion();
+        this.repairStep = new VRepairStep();
     }
 
-    public ViewTechnicianOptions getOptions() {
+    public VTechnicianOptions getOptions() {
         return options;
     }
 
-    public ViewRepairPlanSugestion getPlanSugestion() {
+    public VRepairPlanSugestion getPlanSugestion() {
         return planSugestion;
     }
 
-    public ViewRepairStep getRepairStep() {
+    public VRepairStep getRepairStep() {
         return repairStep;
     }
 }
