@@ -1,6 +1,7 @@
 package View;
 
 import View.Device.VDevice;
+import View.Device.VDeviceList;
 import View.Login.VLogin;
 import View.Manager.VManager;
 import View.Receptionist.VReceptionist;
@@ -13,7 +14,6 @@ public class View implements IView {
     private VReceptionist receptionist;
     private VTechnician technician;
     private VLogin login;
-    private VDevice device;
 
     public View() {
         // this.manager = new ManagerView();
@@ -36,10 +36,6 @@ public class View implements IView {
 
     public VTechnician getTechnician() {
         return technician;
-    }
-
-    public VDevice getDevice() {
-        return device;
     }
 
     public void showPopUpMsg(String msg) {
