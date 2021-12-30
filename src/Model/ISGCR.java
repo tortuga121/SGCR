@@ -26,4 +26,5 @@ public interface ISGCR {
     void deliverDevice(int recepId) throws WorkerDoesNotExist;
     void addWorker(String name, int id, Class<?> c, String password);
     Set<Integer> getClientDevices(String nif) throws DeviceNotFoundException;
+    int generateNewregistrationCode();
 }

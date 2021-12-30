@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.time.Year;
 import java.util.Map;
+import java.util.Random;
 import java.util.Set;
 import java.util.logging.Logger;
 
@@ -122,6 +123,13 @@ public class SGCR implements ISGCR{
         return dcat.getdevicesbyNif(nif);
     }
 
+    public int generateNewregistrationCode() {
+        Random rand = new Random();
+        int randomNum = rand.nextInt((10000 - 1) + 1) + 1;
+        while(dcat.existsDevice(randomNum))
+            randomNum = rand.nextInt((10000 - 1) + 1) + 1;
+        return randomNum;
+    }
 
 
 }

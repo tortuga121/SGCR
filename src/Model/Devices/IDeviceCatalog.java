@@ -11,7 +11,6 @@ public interface IDeviceCatalog {
     IDevice getOldestRequest() throws DeviceNotFoundException;
     boolean existsDevice(int regCode);
     void checkforAbandonedDevices();
-    int generateNewregistrationCode();
     Set<Integer> getdevicesbyNif(String nif) throws DeviceNotFoundException;
 
 }

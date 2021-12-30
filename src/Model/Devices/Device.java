@@ -1,7 +1,5 @@
 package Model.Devices;
 
-import java.time.LocalDateTime;
-
 public class Device implements IDevice {
     private final int regCode;
     private String name;
