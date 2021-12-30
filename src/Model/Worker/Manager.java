@@ -32,6 +32,6 @@ public class Manager extends Worker implements IManager {
 
     @Override
     public Worker clone() { //TODO
-        return null;
+        return new Manager(this);
     }
 }

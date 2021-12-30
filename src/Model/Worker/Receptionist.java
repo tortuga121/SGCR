@@ -23,7 +23,7 @@ public class Receptionist extends Worker implements IReceptionist {
 
     @Override
     public Worker clone() { //TODO
-        return null;
+        return new Receptionist(this);
     }
 
     @Override

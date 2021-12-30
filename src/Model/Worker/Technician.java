@@ -26,8 +26,8 @@ public class Technician extends Worker implements ITechnician{
     }
 
     @Override
-    public Worker clone() { //TODO
-        return null;
+    public Worker clone() {
+        return new Technician(this);
     }
 
     public void addParticipation(int regCode, int stage) {
