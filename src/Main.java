@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class Main {
-    public static void main(String[] args) throws InvalidRegistrationCodeException, WorkerDoesNotExist {
+    public static void main(String[] args) throws InvalidRegistrationCodeException, WorkerDoesNotExist, DeviceNotFoundException {
         SGCR sgcr = new SGCR();
 
         ArrayList<IDevice> arr = new ArrayList<>();
@@ -29,16 +29,17 @@ public class Main {
         arr.add( new Device(8,"999999999", "este é o 9","coluna"));
 
 
-
         sgcr.addWorker("shaggy",122,Receptionist.class,"122");
         sgcr.addWorker("noodle",129,Receptionist.class,"129");
         sgcr.addWorker("azula",19,Technician.class,"19");
         sgcr.addWorker("tortuga",121,Technician.class,"121");
         sgcr.addWorker("blanc",157,Manager.class,"157");
 
+        sgcr.sugestRepairPlan(new RepairPlan(0,"arranja", new ArrayList<>(),200));
+
         for(IDevice d : arr) sgcr.addBudgetRequest(d,129);
-        IController c = new Controller(sgcr);
-        c.exec();
+       // IController c = new Controller(sgcr);
+       // c.exec();
         System.out.println("acabou");
     }
 }

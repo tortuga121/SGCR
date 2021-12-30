@@ -43,7 +43,7 @@ public class RepairCatalog implements IRepairCatalog{
     public IRepairPlan getRepairPlan(int regCode) throws NoRepairException {
         if(repairs.containsKey(regCode))
             return repairs.get(regCode).clone();
-        else throw new NoRepairException("Repair: " + regCode + "does not exist");
+        else throw new NoRepairException("Repair: " + regCode + " does not exist");
     }
 
     @Override
@@ -59,13 +59,13 @@ public class RepairCatalog implements IRepairCatalog{
     public void unaproveBudget(int regCode) throws DeviceNotFoundException {
         if(toApprove.containsKey(regCode)) toApprove.remove(regCode);
         else
-            throw new DeviceNotFoundException("Repair plan with" + regCode + "registration code does not exist");
+            throw new DeviceNotFoundException("Repair plan with code " + regCode + " does not exist");
     }
     @Override
     public void approveBudget(int regCode) throws DeviceNotFoundException {
         if(toApprove.containsKey(regCode)) toApprove.remove(regCode);
         else
-            throw new DeviceNotFoundException("Repair plan with" + regCode + "registration code does not exist");
+            throw new DeviceNotFoundException("Repair plan with code " + regCode + " does not exist");
         toRepair.add(regCode);
     }
 
