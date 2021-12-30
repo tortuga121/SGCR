@@ -30,4 +30,6 @@ public interface ISGCR {
     int availableTechnician() throws WorkerDoesNotExist;
     Set<String> getExpressTypes();
     IDevice getDevice(int id) throws DeviceNotFoundException;
+    Set<Integer> getDeliveredDevicesbyNif(String nif) throws DeviceNotFoundException;
+    void devicePickup(int id, int recepid) throws DeviceNotFoundException, WorkerDoesNotExist;
 }

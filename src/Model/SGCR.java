@@ -10,6 +10,7 @@ import java.time.Year;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class SGCR implements ISGCR{
     private IWorkersCatalog wcat;
@@ -121,6 +122,15 @@ public class SGCR implements ISGCR{
     public Set<Integer> getClientDevices(String nif) throws DeviceNotFoundException {
         return dcat.getdevicesbyNif(nif);
     }
+    public Set<Integer> getDeliveredDevicesbyNif(String nif) throws DeviceNotFoundException {
+        return dcat.getDeliveredDevicesbyNif(nif);
+    }
+
+    @Override
+    public void devicePickup(int id, int recepid) throws DeviceNotFoundException, WorkerDoesNotExist {
+        deliverDevice(recepid);
+        dcat.pickupDevice(id);
+    }
 
     public int generateNewregistrationCode() {
         Random rand = new Random();
@@ -144,6 +154,7 @@ public class SGCR implements ISGCR{
     public IDevice getDevice(int id) throws DeviceNotFoundException {
         return dcat.getdevice(id).clone();
     }
+
 
 
 
