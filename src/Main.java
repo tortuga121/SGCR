@@ -37,6 +37,8 @@ public class Main {
 
         IController c = new Controller(sgcr);
         c.exec();
+
         System.out.println("acabou");
+
     }
 }
