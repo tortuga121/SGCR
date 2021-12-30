@@ -140,9 +140,10 @@ public class SGCR implements ISGCR{
     }
 
     @Override
-    public String getDeviceName(int id) throws DeviceNotFoundException {
-        return dcat.getdevice(id).getName();
+    public IDevice getDevice(int id) throws DeviceNotFoundException {
+        return dcat.getdevice(id).clone();
     }
+
 
 
 }

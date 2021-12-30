@@ -29,5 +29,5 @@ public interface ISGCR {
     int generateNewregistrationCode();
     int availableTechnician() throws WorkerDoesNotExist;
     Set<String> getExpressTypes();
-    String getDeviceName(int id) throws DeviceNotFoundException;
+    IDevice getDevice(int id) throws DeviceNotFoundException;
 }
