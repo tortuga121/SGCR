@@ -1,6 +1,7 @@
 package Model.Client;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -15,6 +16,12 @@ public class DeviceCatalog implements IDeviceCatalog {
     private HashMap<Integer, LocalDate> toPickup;
     private HashSet<Integer> abandonedDevices;
     private HashSet<Integer> archivedRequests;
+
+    public DeviceCatalog() {
+        IDevice a = new Device(1,"123456789","este é o 1", LocalDateTime.now());
+        IDevice b = new Device(2,"987654321","este é o 2", LocalDateTime.now());
+        IDevice c = new Device(3,"333333333", "este é o 3",LocalDateTime.now());
+    }
 
     public IDevice getOldestRequest() throws DeviceNotFoundException {
         if(budgetRequest.size() == 0)
