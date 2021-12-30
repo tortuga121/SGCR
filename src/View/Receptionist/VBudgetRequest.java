@@ -11,6 +11,8 @@ public class VBudgetRequest extends JFrame{
     private JTextArea problemDescriptionTxt;
     private JButton saveButton;
     private JLabel problemDescription;
+    private JTextField nameTxt;
+    private JLabel deviceName;
 
     public VBudgetRequest() {
         super("Budget Request Form");
@@ -33,6 +35,8 @@ public class VBudgetRequest extends JFrame{
     public JTextArea getProblemDescription() {
         return problemDescriptionTxt;
     }
+
+    public JTextField getDeviceName() { return nameTxt; }
 
     public JButton getSaveButton() {
         return saveButton;
