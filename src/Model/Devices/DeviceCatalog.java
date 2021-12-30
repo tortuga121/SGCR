@@ -78,4 +78,10 @@ public class DeviceCatalog implements IDeviceCatalog {
         if(!nifs.containsKey(nif)) throw new DeviceNotFoundException("no Devices with nif: " + nif);
         return new HashSet<>(nifs.get(nif));
     }
+
+    @Override
+    public IDevice getdevice(int id) throws DeviceNotFoundException {
+        if(existsDevice(id)) return devices.get(id);
+        else throw new DeviceNotFoundException("Device: " + id + "does not exist");
+    }
 }

@@ -10,7 +10,6 @@ import java.time.Year;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
-import java.util.logging.Logger;
 
 public class SGCR implements ISGCR{
     private IWorkersCatalog wcat;
@@ -130,6 +129,21 @@ public class SGCR implements ISGCR{
         while(dcat.existsDevice(randomNum))
             randomNum = rand.nextInt((10000 - 1) + 1) + 1;
         return randomNum;
+    }
+
+    @Override
+    public int availableTechnician() throws WorkerDoesNotExist {
+        return wcat.getAvailableTech();
+    }
+
+    @Override
+    public Set<String> getExpressTypes() {
+        return ExpressRepair.expressTypes.keySet();
+    }
+
+    @Override
+    public String getDeviceName(int id) throws DeviceNotFoundException {
+        return dcat.getdevice(id).getName();
     }
 
 

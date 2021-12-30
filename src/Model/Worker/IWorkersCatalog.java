@@ -18,4 +18,5 @@ public interface IWorkersCatalog {
     void addReceptionist(String name, int id);
     void addTechnician(String name, int id);
     void addLogin(String pass, int id);
+    int getAvailableTech() throws WorkerDoesNotExist;
 }

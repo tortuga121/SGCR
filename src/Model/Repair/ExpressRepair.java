@@ -8,7 +8,7 @@ public class ExpressRepair implements IExpressRepair {
     private int regCode;
     private String generalDescription;
     private String type;
-    private static final HashMap<String,Double> expressTypes;
+    public static final HashMap<String,Double> expressTypes;
     static {
         expressTypes = new HashMap<>();
         expressTypes.put("substituir ecrã de um telemóvel", 1.0);

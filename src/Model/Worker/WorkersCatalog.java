@@ -2,8 +2,8 @@ package Model.Worker;
 
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import Exception.*;
@@ -92,5 +92,15 @@ public class WorkersCatalog implements IWorkersCatalog{
     public void addLogin(String pass, int id) {
         logins.put(id,pass);
     }
+
+    @Override
+    public int getAvailableTech() throws WorkerDoesNotExist {
+        Optional<IWorker> opW =  workers.values().stream()
+                .filter(a -> a.getClass() == Technician.class && ((Technician) a).isAvailable())
+                .findFirst();
+        if(opW.isEmpty()) throw new WorkerDoesNotExist("No workers available");
+        return opW.get().getId();
+    }
+
 
 }

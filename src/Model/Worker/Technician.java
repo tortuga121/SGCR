@@ -7,11 +7,11 @@ import java.util.stream.Collectors;
 
 public class Technician extends Worker implements ITechnician{
     private HashMap<Integer, HashSet<Integer>> participations;
-    private boolean working;
+    private boolean available;
 
     public Technician(String nome, int id) {
         super(nome,id);
-        working = false;
+        available = false;
         participations = new HashMap<>();
     }
 
@@ -22,7 +22,7 @@ public class Technician extends Worker implements ITechnician{
                 .stream()
                 .collect(Collectors.toMap(Map.Entry<Integer,HashSet<Integer>>::getKey,
                         v -> new HashSet<>( v.getValue()))));
-        working = t.working;
+        available = t.available;
     }
 
     @Override
@@ -41,13 +41,13 @@ public class Technician extends Worker implements ITechnician{
     }
 
     @Override
-    public boolean isWorking() {
-        return working;
+    public boolean isAvailable() {
+        return available;
     }
 
     @Override
-    public void setWorking(boolean working) {
-        this.working = working;
+    public void setAvailable(boolean available) {
+        this.available = available;
     }
 
 }
