@@ -21,6 +21,10 @@ public class Controller implements IController{
         view = new View();
         sgcr = new SGCR();
     }
+    public Controller(SGCR sgcr) {
+        view = new View();
+        sgcr = sgcr;
+    }
 
     public void exec() {
         VLogin vl = view.getLogin();

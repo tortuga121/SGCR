@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.time.Year;
 import java.util.Map;
+import java.util.logging.Logger;
 
 public class SGCR implements ISGCR{
     private IWorkersCatalog wcat;
@@ -18,6 +19,12 @@ public class SGCR implements ISGCR{
         wcat = new WorkersCatalog();
         dcat = new DeviceCatalog();
         rcat = new RepairCatalog();
+    }
+
+    public SGCR(IWorkersCatalog wcat, IDeviceCatalog dcat, IRepairCatalog rcat) {
+        this.wcat = wcat;
+        this.dcat = dcat;
+        this.rcat = rcat;
     }
 
     @Override
@@ -99,6 +106,14 @@ public class SGCR implements ISGCR{
     @Override
     public void deliverDevice(int recepId) throws WorkerDoesNotExist {
         wcat.incRecepDelivCount(recepId);
+    }
+
+    @Override
+    public void addWorker(String name, int id, Class<?> c, String password) {
+        if(c.equals(Manager.class)) wcat.addManager(name,id,password);
+        else if(c.equals(Technician.class)) wcat.addTechnician(name,id,password);
+        else if(c.equals(Receptionist.class)) wcat.addReceptionist(name,id,password);
+        wcat.addLogin(password,id);
     }
 
 

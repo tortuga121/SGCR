@@ -1,50 +1,42 @@
 import Controller.*;
+import Model.*;
+import Model.Devices.Device;
+import Model.Devices.DeviceCatalog;
+import Model.Devices.IDevice;
+import Model.Devices.*;
+import Model.Repair.*;
+import Model.Worker.*;
+import Exception.*;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 public class Main {
-    public static void main(String[] args) {
-        /*
-        ViewLogin login = new ViewLogin();
-        login.setVisible(true);
-        login.getSaveButton().addActionListener(e -> {
-            String user = login.getUserTextField().getText();
-            String pass = login.getPassField().getText();
-            System.out.println("Username: " + user);
-            System.out.println("Password: " + pass);
-        });*/
-        /*
-        ViewBudgetRequest vbr = new ViewBudgetRequest();
-        vbr.setVisible(true);
-        vbr.getSaveButton().addActionListener(e -> {
-            String idd = vbr.getDevideID().getText();
-            String idr = vbr.getReceptionistID().getText();
-            String nif = vbr.getClientNIF().getText();
-            String prb = vbr.getProblemDescription().getText();
-            System.out.println("ID Device: " + idd);
-            System.out.println("ID Receptionist: " + idr);
-            System.out.println("Client NIF: " + nif);
-            System.out.println("Problem: " + prb);
-        });
-        /*
-        ViewRefuseBudget vrb = new ViewRefuseBudget();
-        vrb.setVisible(true);
-        vrb.getSaveButton().addActionListener(e -> {
-            String id = vrb.getDeviceID().getText();
-            System.out.println("Device ID: " + id);
-        });*/
-        /*ViewRepairPlanSugestion vrp = new ViewRepairPlanSugestion();
-        vrp.setVisible(true);
-        vrp.getSaveButton().addActionListener(e -> {
-            String idd = vrp.getDeviceID().getText();
-            String prb = vrp.getProblemDescription().getText();
-            List<String> l = new ArrayList<>();
-            for (int i = 0; i < vrp.getRepairStepsList().getSize(); i++)
-                l.add(vrp.getRepairStepsList().get(i));
-            System.out.println("ID Device: " + idd);
-            System.out.println("Problem: " + prb);
-            for (int i = 0; i < vrp.getRepairStepsList().getSize(); i++)
-                System.out.println("Passo " + i + ": " + l.get(i));
-        });*/
-        IController c = new Controller();
+    public static void main(String[] args) throws InvalidRegistrationCodeException, WorkerDoesNotExist {
+        SGCR sgcr = new SGCR();
+
+        ArrayList<IDevice> arr = new ArrayList<>();
+        arr.add( new Device(0,"000000000","este é o 1", LocalDateTime.now()));
+        arr.add( new Device(1,"000000000","este é o 2", LocalDateTime.now()));
+        arr.add( new Device(2,"000000000", "este é o 3",LocalDateTime.now()));
+        arr.add( new Device(3,"444444444", "este é o 4",LocalDateTime.now()));
+        arr.add( new Device(4,"444444444", "este é o 5",LocalDateTime.now()));
+        arr.add( new Device(5,"666666666", "este é o 6",LocalDateTime.now()));
+        arr.add( new Device(6,"888888888", "este é o 7",LocalDateTime.now()));
+        arr.add( new Device(7,"888888888", "este é o 8",LocalDateTime.now()));
+        arr.add( new Device(8,"999999999", "este é o 9",LocalDateTime.now()));
+
+
+
+        sgcr.addWorker("shaggy",122,Receptionist.class,"122");
+        sgcr.addWorker("noodle",129,Receptionist.class,"129");
+        sgcr.addWorker("azula",19,Technician.class,"19");
+        sgcr.addWorker("tortuga",121,Technician.class,"121");
+        sgcr.addWorker("blanc",122,Manager.class,"157");
+
+        for(IDevice d : arr) sgcr.addBudgetRequest(d,129);
+
+        IController c = new Controller(sgcr);
         c.exec();
     }
 }

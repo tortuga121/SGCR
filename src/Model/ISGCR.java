@@ -23,4 +23,5 @@ public interface ISGCR {
     IDevice getBudgetRequest() throws DeviceNotFoundException;
     void checkForDealines();
     void deliverDevice(int recepId) throws WorkerDoesNotExist;
+    void addWorker(String name, int id, Class<?> c, String password);
 }

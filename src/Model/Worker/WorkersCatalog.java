@@ -2,6 +2,7 @@ package Model.Worker;
 
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -15,16 +16,6 @@ public class WorkersCatalog implements IWorkersCatalog{
     public WorkersCatalog() {
         workers = new HashMap<>();
         logins = new HashMap<>();
-        workers.put(121,new Technician("totuga",121));
-        workers.put(19,new Technician("azila",19));
-        workers.put(129,new Receptionist("noodel",129));
-        workers.put(122,new Receptionist("shaggi",122));
-        workers.put(157,new Manager("blan",157));
-        logins.put(121,"tortuga");
-        logins.put(19,"azula");
-        logins.put(129,"noodle");
-        logins.put(122,"shaggy");
-        logins.put(157,"blanc");
     }
 
     @Override
@@ -79,6 +70,27 @@ public class WorkersCatalog implements IWorkersCatalog{
         if(existsTechnician(techId))
             ((ITechnician)workers.get(techId)).addParticipation(regCode,stage);
         else throw new WorkerDoesNotExist("Technician: " + regCode);
+    }
+
+
+    @Override
+    public void addManager(String name, int id, String password) {
+        workers.put(id,new Manager(name,id));
+    }
+
+    @Override
+    public void addReceptionist(String name, int id, String password) {
+        workers.put(id,new Receptionist(name,id));
+    }
+
+    @Override
+    public void addTechnician(String name, int id, String password) {
+        workers.put(id,new Technician(name,id));
+    }
+
+    @Override
+    public void addLogin(String pass, int id) {
+        logins.put(id,pass);
     }
 
 }

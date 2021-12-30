@@ -14,4 +14,8 @@ public interface IWorkersCatalog {
     boolean login(int id, String password);
     boolean existsReceptionist(int id);
     void incRecepDelivCount(int id) throws WorkerDoesNotExist;
+    void addManager(String name, int id, String password);
+    void addReceptionist(String name, int id, String password);
+    void addTechnician(String name, int id, String password);
+    void addLogin(String pass, int id);
 }
