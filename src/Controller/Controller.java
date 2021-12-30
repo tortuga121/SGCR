@@ -57,8 +57,12 @@ public class Controller implements IController{
             execRequestBudget(workerID);
         });
         vr.getReceptionistOptions().getRefuseBudget().addActionListener(e -> {
-            execRefuseBudget();
+            execEditBudget(false);
         });
+        vr.getReceptionistOptions().getAproveBudget().addActionListener(e -> {
+            execEditBudget(true);
+        });
+
     }
 
     public void execTechnician(int workerID) {
@@ -77,8 +81,8 @@ public class Controller implements IController{
         //TODO
     }
 
-    public void execRefuseBudget() {
-        VRefuseBudget vrb = view.getReceptionist().getRefuseBudget();
+    public void execEditBudget(boolean aprove) {
+        VDeviceByClient vrb = view.getReceptionist().getDeviceByClient();
         vrb.setVisible(true);
         vrb.getSaveButton().addActionListener(e -> {
             String nif = vrb.getNIF().getText();
@@ -100,12 +104,26 @@ public class Controller implements IController{
                         Device device = (Device) sgcr.getDevice(regCode);
                         VDevice vDevice = new VDevice(device);
                         vDevice.setVisible(true);
-                        view.showPopUpMsg("Para recusar o plano de reparação clique em confirmar.\nCaso contrário feche a janela.");
+                        if (!aprove) view.showPopUpMsg("Para recusar o plano de reparação clique em confirmar.\nCaso contrário feche a janela.");
+                        else view.showPopUpMsg("Para aprovar o plano de reparação clique em confirmar.\nCaso contrário feche a janela.");
                         vDevice.getDoneButton().addActionListener(e2 -> {
                             try {
-                                LocalDate deadline = sgcr.refuseBudget(regCode);vDevice.dispose();
-                                vdl.dispose();
-                                view.showPopUpMsg("Reparação cancelada.\nTem até " + deadline.toString() + " para levantar o seu equipamento.");
+                                if (!aprove){
+                                    LocalDate deadline = sgcr.refuseBudget(regCode);
+                                    vDevice.dispose();
+                                    vdl.dispose();
+                                    vDevice.dispose();
+                                    vrb.dispose();
+                                    view.showPopUpMsg("Reparação cancelada.\nTem até " + deadline.toString() + " para levantar o seu equipamento.");
+                                }
+                                else {
+                                    sgcr.aceptBudget(regCode);
+                                    vDevice.dispose();
+                                    vdl.dispose();
+                                    vDevice.dispose();
+                                    vrb.dispose();
+                                    view.showPopUpMsg("Orçamento aprovado.");
+                                }
                             } catch (DeviceNotFoundException | WorkerDoesNotExist ex) {
                                 view.showPopUpMsg(ex.getMessage());
                             }

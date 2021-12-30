@@ -35,11 +35,11 @@ public class Main {
         sgcr.addWorker("tortuga",121,Technician.class,"121");
         sgcr.addWorker("blanc",157,Manager.class,"157");
 
+        for(IDevice d : arr) sgcr.addBudgetRequest(d,129);
         sgcr.sugestRepairPlan(new RepairPlan(0,"arranja", new ArrayList<>(),200));
 
-        for(IDevice d : arr) sgcr.addBudgetRequest(d,129);
-       // IController c = new Controller(sgcr);
-       // c.exec();
+        IController c = new Controller(sgcr);
+        c.exec();
         System.out.println("acabou");
     }
 }

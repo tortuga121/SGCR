@@ -8,6 +8,7 @@ public class VReceptionistOptions extends JFrame {
     private JButton refuseBudget;
     private JButton requestBudget;
     private JLabel optionsLabel;
+    private JButton aproveBudget;
 
     public VReceptionistOptions() {
         super("Receptionist Option Menu");
@@ -25,5 +26,9 @@ public class VReceptionistOptions extends JFrame {
 
     public JButton getRequestBudget() {
         return requestBudget;
+    }
+
+    public JButton getAproveBudget() {
+        return aproveBudget;
     }
 }

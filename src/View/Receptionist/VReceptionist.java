@@ -2,11 +2,11 @@ package View.Receptionist;
 
 public class VReceptionist {
     private VBudgetRequest requestBudget;
-    private VRefuseBudget refuseBudget;
+    private VDeviceByClient deviceByClient;
     private VReceptionistOptions options;
 
     public VReceptionist() {
-        this.refuseBudget = new VRefuseBudget();
+        this.deviceByClient = new VDeviceByClient();
         this.requestBudget = new VBudgetRequest();
         this.options = new VReceptionistOptions();
     }
@@ -15,8 +15,8 @@ public class VReceptionist {
         return requestBudget;
     }
 
-    public VRefuseBudget getRefuseBudget() {
-        return refuseBudget;
+    public VDeviceByClient getDeviceByClient() {
+        return deviceByClient;
     }
 
     public VReceptionistOptions getReceptionistOptions() {
