@@ -8,6 +8,4 @@ public interface IReceptionist extends IWorker{
     void addDelivery();
     void addReception();
 
-    IDevice budgetRequest(int regCode, String nif, String descr);
-
 }

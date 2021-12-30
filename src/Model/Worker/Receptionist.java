@@ -26,11 +26,6 @@ public class Receptionist extends Worker implements IReceptionist {
         return new Receptionist(this);
     }
 
-    @Override
-    public IDevice budgetRequest(int regCode, String nif, String descr) {
-        IDevice dev = new Device(regCode,nif,descr, LocalDateTime.now());
-        return dev;
-    }
 
 
     @Override

@@ -72,13 +72,6 @@ public class DeviceCatalog implements IDeviceCatalog {
                 .collect(Collectors.toMap(Map.Entry::getKey,Map.Entry::getValue)));
     }
 
-    public int generateNewregistrationCode() {
-        Random rand = new Random();
-        int randomNum = rand.nextInt((10000 - 1) + 1) + 1;
-        while(devices.containsKey(randomNum))
-            randomNum = rand.nextInt((10000 - 1) + 1) + 1;
-        return randomNum;
-    }
 
     @Override
     public Set<Integer> getdevicesbyNif(String nif) throws DeviceNotFoundException {

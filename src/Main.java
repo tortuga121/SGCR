@@ -16,15 +16,15 @@ public class Main {
         SGCR sgcr = new SGCR();
 
         ArrayList<IDevice> arr = new ArrayList<>();
-        arr.add( new Device(0,"000000000","este é o 1", LocalDateTime.now()));
-        arr.add( new Device(1,"000000000","este é o 2", LocalDateTime.now()));
-        arr.add( new Device(2,"000000000", "este é o 3",LocalDateTime.now()));
-        arr.add( new Device(3,"444444444", "este é o 4",LocalDateTime.now()));
-        arr.add( new Device(4,"444444444", "este é o 5",LocalDateTime.now()));
-        arr.add( new Device(5,"666666666", "este é o 6",LocalDateTime.now()));
-        arr.add( new Device(6,"888888888", "este é o 7",LocalDateTime.now()));
-        arr.add( new Device(7,"888888888", "este é o 8",LocalDateTime.now()));
-        arr.add( new Device(8,"999999999", "este é o 9",LocalDateTime.now()));
+        arr.add( new Device(0,"000000000","este é o 1", "pc"));
+        arr.add( new Device(1,"000000000","este é o 2", "tele"));
+        arr.add( new Device(2,"000000000", "este é o 3","maquina"));
+        arr.add( new Device(3,"444444444", "este é o 4","frigorifico"));
+        arr.add( new Device(4,"444444444", "este é o 5","mac"));
+        arr.add( new Device(5,"666666666", "este é o 6","smartwatch"));
+        arr.add( new Device(6,"888888888", "este é o 7","televisoa"));
+        arr.add( new Device(7,"888888888", "este é o 8","fones"));
+        arr.add( new Device(8,"999999999", "este é o 9","coluna"));
 
 
 
