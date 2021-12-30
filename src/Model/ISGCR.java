@@ -11,6 +11,7 @@ import java.util.Map;
 public interface ISGCR {
     void addBudgetRequest(IDevice device, int recepcionistId) throws WorkerDoesNotExist, InvalidRegistrationCodeException;
     LocalDate refuseBudget(int regCode) throws DeviceNotFoundException, WorkerDoesNotExist;
+    void aceptBudget(int regCode) throws DeviceNotFoundException;
     void sugestRepairPlan(IRepairPlan rp) throws DeviceNotFoundException;
     IRepairPlan getMostUrgentRepair() throws NoRepairException;
     void repairNextStep(int regCode, int techId, double cost, double time) throws WorkerDoesNotExist, NoRepairException, NoMoreStepsException;
