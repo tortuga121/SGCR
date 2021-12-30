@@ -68,6 +68,11 @@ public class WorkersCatalog implements IWorkersCatalog{
             ((IReceptionist )workers.get(id)).addReception();
         else throw new WorkerDoesNotExist("Receptionist " + id);
     }
+    public void incRecepDelivCount(int id) throws WorkerDoesNotExist {
+        if(existsReceptionist(id))
+            ((IReceptionist )workers.get(id)).addDelivery();
+        else throw new WorkerDoesNotExist("Receptionist " + id);
+    }
 
     @Override
     public void updateTechicianStep(int regCode, int stage, int techId) throws WorkerDoesNotExist{

@@ -8,5 +8,6 @@ public interface IRepairCatalog {
     int mostUrgentRepair() throws NoRepairException;
     IRepairPlan getRepairPlan(int regCode) throws NoRepairException;
     void addExpressrepair(String type, int regcode, String desrp);
+    void checkForOutdated();
 
 }

@@ -4,6 +4,7 @@ import Model.Devices.*;
 import Model.Repair.*;
 import Model.Worker.*;
 
+import java.time.LocalDate;
 import java.time.Month;
 import java.time.Year;
 import java.util.Map;
@@ -26,9 +27,9 @@ public class SGCR implements ISGCR{
     }
 
     @Override
-    public void refuseBudget(int regCode) throws DeviceNotFoundException {
+    public LocalDate refuseBudget(int regCode) throws DeviceNotFoundException, WorkerDoesNotExist {
         rcat.unaproveBudget(regCode);
-        dcat.addToPickup(regCode);
+        return dcat.addToPickup(regCode);
     }
 
     @Override
@@ -78,5 +79,22 @@ public class SGCR implements ISGCR{
     public boolean login(int id, String pass) throws WorkerDoesNotExist {
         return wcat.login(id,pass);
     }
+
+    @Override
+    public IDevice getBudgetRequest() throws DeviceNotFoundException {
+        return dcat.getOldestRequest();
+    }
+
+    @Override
+    public void checkForDealines() {
+        dcat.checkforAbandonedDevices();
+        rcat.checkForOutdated();
+    }
+
+    @Override
+    public void deliverDevice(int recepId) throws WorkerDoesNotExist {
+        wcat.incRecepDelivCount(recepId);
+    }
+
 
 }

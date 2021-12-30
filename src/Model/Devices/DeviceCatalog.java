@@ -52,11 +52,12 @@ public class DeviceCatalog implements IDeviceCatalog {
        devices.put(dev.getRegCode(),dev);
        budgetRequest.add(dev.getRegCode());
     }
-    public void addToPickup(int regCode) throws DeviceNotFoundException {
+    public LocalDate addToPickup(int regCode) throws DeviceNotFoundException {
         if(existsDevice(regCode))
             toPickup.put(regCode,LocalDate.now().plusDays(90));
         else
             throw new DeviceNotFoundException("" + regCode);
+        return LocalDate.now().plusDays(90);
     }
     public void popOldestRequest() throws DeviceNotFoundException {
         if(budgetRequest.size() == 0)
@@ -82,5 +83,12 @@ public class DeviceCatalog implements IDeviceCatalog {
         toPickup = new HashMap<>( toPickup.entrySet().stream()
                 .filter(e -> e.getValue().compareTo(LocalDate.now()) < 0)
                 .collect(Collectors.toMap(Map.Entry::getKey,Map.Entry::getValue)));
+    }
+    public int generateNewregistrationCode() {
+        Random rand = new Random();
+        int randomNum = rand.nextInt((10000 - 1) + 1) + 1;
+        while(devices.containsKey(randomNum))
+            randomNum = rand.nextInt((10000 - 1) + 1) + 1;
+        return randomNum;
     }
 }
