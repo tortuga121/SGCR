@@ -15,6 +15,11 @@ import View.Technician.VTechnician;
 public class Controller implements IController{
     IView view;
     ISGCR sgcr;
+    ICManager icm;
+    ICLogin icl;
+    ICTechnician ict;
+    ICReceptionist icr;
+
 
     public Controller() {
         view = new View();
