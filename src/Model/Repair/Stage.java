@@ -6,36 +6,36 @@ import java.util.stream.Collectors;
 
 import Exception.NoMoreStepsException;
 
-public class Stage extends Step{
+public class Stage {
     private ArrayList<Step> steps;
+    private String description;
+    private int current_step;
 
-    public Stage(double cost, String description, double hours, ArrayList<Step> ss) {
-        super(cost, description, hours);
+    public Stage(String description, ArrayList<Step> ss) {
         steps = ss.stream().map(Step::clone).collect(Collectors.toCollection(ArrayList::new));
+        current_step = 0;
+        this.description = description;
     }
     public Stage(Stage s) {
-        super(s.getCost(), s.getDescription(), s.getTime());
         steps = s.steps.stream().map(Step::clone).collect(Collectors.toCollection(ArrayList::new));
+        description = s.description;
+        current_step = s.current_step;
     }
     public Stage clone() {
         return new Stage(this);
     }
     public boolean hasSteps() {
-        return steps.size() > 0;
+        return current_step < steps.size();
     }
-
+    public double getTime() {
+        return steps.stream().mapToDouble(Step::getTime).sum();
+    }
     public void repairStep(double cost, double time) throws NoMoreStepsException {
-        Optional<Step> optionalStep = steps.stream().filter(Step::isUndone).findFirst();
-        if(optionalStep.isEmpty()) throw new NoMoreStepsException();
-        Step s = optionalStep.get();
+        if(current_step >= steps.size()) throw new NoMoreStepsException();
+        Step s = steps.get(current_step);
         s.setCost(cost);
         s.setTime(time);
-        s.done();
-    }
-
-    public void calculate_costAndTime() {
-        setCost(steps.stream().mapToDouble(Step::getCost).sum());
-        setTime(steps.stream().mapToDouble(Step::getTime).sum());
+        current_step++;
     }
 
 }

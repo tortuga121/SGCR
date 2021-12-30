@@ -2,7 +2,6 @@ package Model.Repair;
 
 
 public class Step {
-    private boolean done;
     private double cost;
     private String description;
     private double hours;
@@ -17,7 +16,6 @@ public class Step {
         this.cost = s.cost;
         this.description = s.description;
         this.hours = s.hours;
-        this.done = s.done;
     }
 
     public Step clone() {
@@ -32,12 +30,6 @@ public class Step {
         this.hours = time;
     }
 
-    public boolean isUndone() {
-        return !done;
-    }
-    public void done() {
-        done = true;
-    }
     public double getCost() {
         return cost;
     }

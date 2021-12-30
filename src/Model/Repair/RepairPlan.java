@@ -12,6 +12,7 @@ public class RepairPlan implements IRepairPlan {
     private ArrayList<Stage> stages;
     private LocalDateTime deadline;
     private double price;
+    private int current_stage;
 
 
     public LocalDateTime getDeadline() {
@@ -23,6 +24,7 @@ public class RepairPlan implements IRepairPlan {
         this.generalDescription = generalDescription;
         this.stages = stages;
         this.price = price;
+        current_stage = 0;
     }
     public RepairPlan(RepairPlan rp) {
         this.regCode = rp.regCode;
@@ -30,6 +32,7 @@ public class RepairPlan implements IRepairPlan {
         this.stages = rp.stages.stream().map(Stage::clone).collect(Collectors.toCollection(ArrayList::new));
         this.deadline = rp.deadline;
         this.price = rp.price;
+        this.current_stage = rp.current_stage;
     }
 
     @Override
@@ -60,33 +63,16 @@ public class RepairPlan implements IRepairPlan {
 
     @Override
     public int repairNext(double cost, double time) throws NoMoreStepsException {
-        Optional<Stage> optionalStage = Optional.empty();
-        int i;
-        for (i = 0; i < stages.size(); i++) {
-            Stage s = stages.get(i);
-            if (!s.isUndone()) {
-                optionalStage = Optional.of(s);
-                break;
-            }
-        }
-
-        if (optionalStage.isEmpty()) throw new NoMoreStepsException();
-        Stage s = optionalStage.get();
-        if(s.hasSteps()) {
-            s.repairStep(cost, time);
-            if (!s.hasSteps()) {
-                s.calculate_costAndTime();
-            }
-        } else {
-            s.setTime(time);
-            s.setCost(cost);
-        }
-        return i;
+       if(current_stage >= stages.size()) throw new NoMoreStepsException();
+        Stage s = stages.get(current_stage);
+        s.repairStep(cost, time);
+        current_stage++;
+        return current_stage-1;
     }
 
     @Override
     public double getTimeofRepair() {
-       return stages.stream().mapToDouble(Step::getTime).sum();
+       return stages.stream().mapToDouble(Stage::getTime).sum();
     }
     @Override
     public int compareTo(Object o) {
