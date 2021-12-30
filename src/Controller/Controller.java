@@ -30,12 +30,10 @@ public class Controller implements IController{
                 String pass = vl.getPassField().getText();
                 if (sgcr.login(id, pass)) {
                     vl.dispose();
-                    IManager m = new Manager("0", 0);
-                    IReceptionist r = new Receptionist("0", 0);
-                    ITechnician t = new Technician("0", 0);
-                    if (sgcr.getWorkerType(id).equals(m.getClass())) execManager();
-                    else if (sgcr.getWorkerType(id).equals(t.getClass())) execTechnician();
-                    else if (sgcr.getWorkerType(id).equals(r.getClass())) execReceptionist();
+
+                    if (sgcr.getWorkerType(id).equals(Manager.class)) execManager();
+                    else if (sgcr.getWorkerType(id).equals(Technician.class)) execTechnician();
+                    else if (sgcr.getWorkerType(id).equals(Receptionist.class)) execReceptionist();
                 }
                 else view.showPopUpMsg("Credenciais inválidas.");
             } catch (NumberFormatException | WorkerDoesNotExist exception) {

@@ -11,6 +11,22 @@ public class WorkersCatalog implements IWorkersCatalog{
 
     private HashMap<Integer,IWorker> workers;
     private HashMap<Integer,String> logins;
+
+    public WorkersCatalog() {
+        workers = new HashMap<>();
+        logins = new HashMap<>();
+        workers.put(121,new Technician("totuga",121));
+        workers.put(19,new Technician("azila",19));
+        workers.put(129,new Receptionist("noodel",129));
+        workers.put(122,new Receptionist("shaggi",122));
+        workers.put(157,new Manager("blan",157));
+        logins.put(121,"tortuga");
+        logins.put(19,"azula");
+        logins.put(129,"noodle");
+        logins.put(122,"shaggy");
+        logins.put(157,"blanc");
+    }
+
     @Override
     public Map<Integer, Integer> num_rep_technicians() {
       return workers.values().stream()

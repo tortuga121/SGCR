@@ -2,10 +2,7 @@ package Model.Client;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Queue;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import Exception.*;
@@ -18,9 +15,30 @@ public class DeviceCatalog implements IDeviceCatalog {
     private HashSet<Integer> archivedRequests;
 
     public DeviceCatalog() {
+        devices = new HashMap<>() ;
+        budgetRequest = new LinkedList<>();
+        toPickup = new HashMap<>() ;
+        abandonedDevices = new HashSet<>() ;
+        archivedRequests = new HashSet<>() ;
         IDevice a = new Device(1,"123456789","este é o 1", LocalDateTime.now());
         IDevice b = new Device(2,"987654321","este é o 2", LocalDateTime.now());
         IDevice c = new Device(3,"333333333", "este é o 3",LocalDateTime.now());
+        IDevice d = new Device(4,"444444444", "este é o 4",LocalDateTime.now());
+        IDevice e = new Device(5,"555555555", "este é o 5",LocalDateTime.now());
+        devices.put(a.getRegCode(),a);
+        devices.put(b.getRegCode(),b);
+        devices.put(c.getRegCode(),c);
+        devices.put(d.getRegCode(),d);
+        devices.put(e.getRegCode(),e);
+
+        budgetRequest.add(a.getRegCode());
+        budgetRequest.add(b.getRegCode());
+        budgetRequest.add(d.getRegCode());
+        budgetRequest.add(e.getRegCode());
+
+
+        toPickup.put(c.getRegCode(),LocalDate.now().plusDays(2));
+
     }
 
     public IDevice getOldestRequest() throws DeviceNotFoundException {

@@ -15,6 +15,13 @@ public class RepairCatalog implements IRepairCatalog{
     private TreeSet<Integer> toRepair;
     private HashMap<Integer, LocalDateTime> toApprove;
 
+    public RepairCatalog() {
+        repairs = new HashMap<>();
+        expressRepairs = new HashMap<>();
+        toRepair = new TreeSet<>();
+        toApprove = new HashMap<>();
+    }
+
     public void checkForOutdated() {
         toApprove =  new HashMap<>( toApprove.entrySet()
                 .stream()
