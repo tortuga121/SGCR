@@ -4,6 +4,11 @@ public abstract class Worker implements IWorker {
     private String name;
     private int id;
 
+    public Worker(Worker t) {
+        name = t.name;
+        id = t.id;
+    }
+
     public String getName() {
         return name;
     }

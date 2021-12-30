@@ -2,6 +2,8 @@ package Model.Worker;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Technician extends Worker implements ITechnician{
     private HashMap<Integer, HashSet<Integer>> participations;
@@ -11,6 +13,16 @@ public class Technician extends Worker implements ITechnician{
         super(nome,id);
         working = false;
         participations = new HashMap<>();
+    }
+
+    public Technician(Technician t) {
+        super(t);
+        participations =  new HashMap<>(t.participations
+                .entrySet()
+                .stream()
+                .collect(Collectors.toMap(Map.Entry<Integer,HashSet<Integer>>::getKey,
+                        v -> new HashSet<>( v.getValue()))));
+        working = t.working;
     }
 
     @Override

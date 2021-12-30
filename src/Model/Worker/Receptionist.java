@@ -14,6 +14,12 @@ public class Receptionist extends Worker implements IReceptionist {
         totalDeliveries = 0;
         totalReceptions = 0;
     }
+    public Receptionist(Receptionist r) {
+        super(r);
+        totalDeliveries = r.totalDeliveries;
+        totalReceptions = r.totalReceptions;
+    }
+
 
     @Override
     public Worker clone() { //TODO
