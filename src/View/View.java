@@ -38,6 +38,10 @@ public class View implements IView {
         return technician;
     }
 
+    public VDevice getDevice() {
+        return device;
+    }
+
     public void showPopUpMsg(String msg) {
         JOptionPane.showMessageDialog(null, msg);
     }
