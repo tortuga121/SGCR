@@ -35,9 +35,7 @@ public class Controller implements IController{
                 String pass = vl.getPassField().getText();
                 if (sgcr.login(id, pass)) {
                     vl.dispose();
-                    System.out.println(id);
-                    System.out.println(sgcr.getWorkerType(id));
-                    if (sgcr.getWorkerType(id).equals(CManager.class)) execManager();
+                    if (sgcr.getWorkerType(id).equals(Manager.class)) execManager();
                     else if (sgcr.getWorkerType(id).equals(Technician.class)) execTechnician();
                     else if (sgcr.getWorkerType(id).equals(Receptionist.class)) execReceptionist();
                 }
@@ -55,7 +53,7 @@ public class Controller implements IController{
             vr.getRequestBudget().setVisible(true);
         });
         vr.getReceptionistOptions().getRefuseBudget().addActionListener(e -> {
-            vr.getRequestBudget().setVisible(true);
+            vr.getRefuseBudget().setVisible(true);
         });
     }
 
