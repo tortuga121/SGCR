@@ -5,12 +5,12 @@ import Model.ISGCR;
 import Model.SGCR;
 import Model.Worker.*;
 import View.*;
-import View.Login.ViewLogin;
-import View.Manager.IManagerView;
-import View.Manager.ManagerView;
+import View.Login.VLogin;
+import View.Manager.IVManager;
+import View.Manager.VManager;
 import View.Receptionist.*;
-import View.Technician.ITechnicianView;
-import View.Technician.TechnicianView;
+import View.Technician.IVTechnician;
+import View.Technician.VTechnician;
 
 public class Controller implements IController{
     IView view;
@@ -22,7 +22,7 @@ public class Controller implements IController{
     }
 
     public void exec() {
-        ViewLogin vl = view.getLogin();
+        VLogin vl = view.getLogin();
         vl.setVisible(true);
         vl.getSaveButton().addActionListener(e -> {
             try {
@@ -32,7 +32,7 @@ public class Controller implements IController{
                     vl.dispose();
                     System.out.println(id);
                     System.out.println(sgcr.getWorkerType(id));
-                    if (sgcr.getWorkerType(id).equals(Manager.class)) execManager();
+                    if (sgcr.getWorkerType(id).equals(CManager.class)) execManager();
                     else if (sgcr.getWorkerType(id).equals(Technician.class)) execTechnician();
                     else if (sgcr.getWorkerType(id).equals(Receptionist.class)) execReceptionist();
                 }
@@ -44,7 +44,7 @@ public class Controller implements IController{
     }
 
     public void execReceptionist() {
-        IReceptionistView vr = new ReceptionistView();
+        IVReceptionist vr = new VReceptionist();
         vr.getReceptionistOptions().setVisible(true);
         vr.getReceptionistOptions().getRequestBudget().addActionListener(e -> {
             vr.getRequestBudget().setVisible(true);
@@ -55,7 +55,7 @@ public class Controller implements IController{
     }
 
     public void execTechnician() {
-        ITechnicianView vt = new TechnicianView();
+        IVTechnician vt = new VTechnician();
         vt.getOptions().setVisible(true);
         vt.getOptions().getEditPlan().addActionListener(e -> {
             //TODO forms edit repair plan
@@ -66,7 +66,7 @@ public class Controller implements IController{
     }
 
     public void execManager() {
-        IManagerView vm = new ManagerView();
+        IVManager vm = new VManager();
         //TODO
     }
 }

@@ -1,11 +1,11 @@
 package View.Receptionist;
 
-public class ReceptionistView implements IReceptionistView{
+public class VReceptionist implements IVReceptionist {
     private ViewBudgetRequest requestBudget;
     private ViewRefuseBudget refuseBudget;
     private ViewReceptionistOptions options;
 
-    public ReceptionistView() {
+    public VReceptionist() {
         this.refuseBudget = new ViewRefuseBudget();
         this.requestBudget = new ViewBudgetRequest();
         this.options = new ViewReceptionistOptions();

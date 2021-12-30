@@ -3,7 +3,7 @@ package View.Login;
 import javax.swing.*;
 import java.awt.*;
 
-public class ViewLogin extends JFrame{
+public class VLogin extends JFrame{
     private JPanel mainPanel;
     private JButton saveButton;
     private JLabel username;
@@ -11,7 +11,7 @@ public class ViewLogin extends JFrame{
     private JTextField userTextField;
     private JPasswordField passwordField;
 
-    public ViewLogin() {
+    public VLogin() {
         super("Login Form");
         this.mainPanel.setPreferredSize(new Dimension(270, 140));
         this.mainPanel.revalidate();

@@ -1,39 +1,39 @@
 package View;
 
-import View.Login.ViewLogin;
-import View.Manager.IManagerView;
-import View.Receptionist.IReceptionistView;
-import View.Receptionist.ReceptionistView;
-import View.Technician.ITechnicianView;
+import View.Login.VLogin;
+import View.Manager.IVManager;
+import View.Receptionist.IVReceptionist;
+import View.Receptionist.VReceptionist;
+import View.Technician.IVTechnician;
 
 import javax.swing.*;
 
 public class View implements IView {
-    private IManagerView manager;
-    private IReceptionistView receptionist;
-    private ITechnicianView technician;
-    private ViewLogin login;
+    private IVManager manager;
+    private IVReceptionist receptionist;
+    private IVTechnician technician;
+    private VLogin login;
 
     public View() {
         // this.manager = new ManagerView();
         // this.technician = new TechnicianView();
-        this.receptionist = new ReceptionistView();
-        this.login = new ViewLogin();
+        this.receptionist = new VReceptionist();
+        this.login = new VLogin();
     }
 
-    public ViewLogin getLogin() {
+    public VLogin getLogin() {
         return login;
     }
 
-    public IManagerView getManager() {
+    public IVManager getManager() {
         return manager;
     }
 
-    public IReceptionistView getReceptionist() {
+    public IVReceptionist getReceptionist() {
         return receptionist;
     }
 
-    public ITechnicianView getTechnician() {
+    public IVTechnician getTechnician() {
         return technician;
     }
 

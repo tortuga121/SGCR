@@ -1,6 +1,6 @@
 package View.Technician;
 
-public interface ITechnicianView {
+public interface IVTechnician {
     ViewTechnicianOptions getOptions();
     ViewRepairPlanSugestion getPlanSugestion();
     ViewRepairStep getRepairStep();

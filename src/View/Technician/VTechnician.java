@@ -1,13 +1,11 @@
 package View.Technician;
 
-import Model.Worker.Technician;
-
-public class TechnicianView implements ITechnicianView {
+public class VTechnician implements IVTechnician {
     private ViewTechnicianOptions options;
     private ViewRepairPlanSugestion planSugestion;
     private ViewRepairStep repairStep;
 
-    public TechnicianView() {
+    public VTechnician() {
         this.options = new ViewTechnicianOptions();
         this.planSugestion = new ViewRepairPlanSugestion();
         this.repairStep = new ViewRepairStep();

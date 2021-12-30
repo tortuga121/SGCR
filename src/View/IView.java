@@ -1,14 +1,14 @@
 package View;
 
-import View.Login.ViewLogin;
-import View.Manager.IManagerView;
-import View.Receptionist.IReceptionistView;
-import View.Technician.ITechnicianView;
+import View.Login.VLogin;
+import View.Manager.IVManager;
+import View.Receptionist.IVReceptionist;
+import View.Technician.IVTechnician;
 
 public interface IView {
-    ViewLogin getLogin();
-    ITechnicianView getTechnician();
-    IReceptionistView getReceptionist();
-    IManagerView getManager();
+    VLogin getLogin();
+    IVTechnician getTechnician();
+    IVReceptionist getReceptionist();
+    IVManager getManager();
     void showPopUpMsg(String msg);
 }
