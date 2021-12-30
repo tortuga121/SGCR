@@ -32,7 +32,7 @@ public class Main {
         sgcr.addWorker("noodle",129,Receptionist.class,"129");
         sgcr.addWorker("azula",19,Technician.class,"19");
         sgcr.addWorker("tortuga",121,Technician.class,"121");
-        sgcr.addWorker("blanc",122,Manager.class,"157");
+        sgcr.addWorker("blanc",157,Manager.class,"157");
 
         for(IDevice d : arr) sgcr.addBudgetRequest(d,129);
 

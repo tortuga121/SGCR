@@ -110,9 +110,9 @@ public class SGCR implements ISGCR{
 
     @Override
     public void addWorker(String name, int id, Class<?> c, String password) {
-        if(c.equals(Manager.class)) wcat.addManager(name,id,password);
-        else if(c.equals(Technician.class)) wcat.addTechnician(name,id,password);
-        else if(c.equals(Receptionist.class)) wcat.addReceptionist(name,id,password);
+        if(c.equals(Manager.class)) wcat.addManager(name,id);
+        else if(c.equals(Technician.class)) wcat.addTechnician(name,id);
+        else if(c.equals(Receptionist.class)) wcat.addReceptionist(name,id);
         wcat.addLogin(password,id);
     }
 

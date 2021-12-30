@@ -24,6 +24,7 @@ public class DeviceCatalog implements IDeviceCatalog {
         nifs = new HashMap<>();
     }
 
+
     public IDevice getOldestRequest() throws DeviceNotFoundException {
         if(budgetRequest.size() == 0)
             throw new DeviceNotFoundException("No more budget requests");

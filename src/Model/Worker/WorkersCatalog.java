@@ -74,17 +74,17 @@ public class WorkersCatalog implements IWorkersCatalog{
 
 
     @Override
-    public void addManager(String name, int id, String password) {
+    public void addManager(String name, int id) {
         workers.put(id,new Manager(name,id));
     }
 
     @Override
-    public void addReceptionist(String name, int id, String password) {
+    public void addReceptionist(String name, int id) {
         workers.put(id,new Receptionist(name,id));
     }
 
     @Override
-    public void addTechnician(String name, int id, String password) {
+    public void addTechnician(String name, int id) {
         workers.put(id,new Technician(name,id));
     }
 
