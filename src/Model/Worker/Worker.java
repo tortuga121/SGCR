@@ -1,6 +1,6 @@
 package Model.Worker;
 
-public class Worker implements IWorker {
+public abstract class Worker implements IWorker {
     private String name;
     private int id;
 
@@ -16,8 +16,5 @@ public class Worker implements IWorker {
     public int getId() {
         return id;
     }
-
-    public Worker clone() {
-        return new Worker(name,id);
-    }
+    public abstract Worker clone();
 }
