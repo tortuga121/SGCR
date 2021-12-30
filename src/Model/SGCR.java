@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.time.Year;
 import java.util.Map;
+import java.util.Set;
 import java.util.logging.Logger;
 
 public class SGCR implements ISGCR{
@@ -114,6 +115,11 @@ public class SGCR implements ISGCR{
         else if(c.equals(Technician.class)) wcat.addTechnician(name,id);
         else if(c.equals(Receptionist.class)) wcat.addReceptionist(name,id);
         wcat.addLogin(password,id);
+    }
+
+    @Override
+    public Set<Integer> getClientDevices(String nif) {
+        return dcat.getdevicesbyNif(nif);
     }
 
 

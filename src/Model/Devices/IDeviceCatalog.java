@@ -2,7 +2,7 @@ package Model.Devices;
 import Exception.*;
 
 import java.time.LocalDate;
-import java.util.List;
+import java.util.Set;
 
 public interface IDeviceCatalog {
     void addRequest(IDevice dev) throws InvalidRegistrationCodeException;
@@ -12,6 +12,6 @@ public interface IDeviceCatalog {
     boolean existsDevice(int regCode);
     void checkforAbandonedDevices();
     int generateNewregistrationCode();
-    List<Integer> getdevicesbyNif(String nif);
+    Set<Integer> getdevicesbyNif(String nif);
 
 }

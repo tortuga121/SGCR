@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.time.Year;
 import java.util.Map;
+import java.util.Set;
 
 public interface ISGCR {
     void addBudgetRequest(IDevice device, int recepcionistId) throws WorkerDoesNotExist, InvalidRegistrationCodeException;
@@ -24,4 +25,5 @@ public interface ISGCR {
     void checkForDealines();
     void deliverDevice(int recepId) throws WorkerDoesNotExist;
     void addWorker(String name, int id, Class<?> c, String password);
+    Set<Integer> getClientDevices(String nif);
 }

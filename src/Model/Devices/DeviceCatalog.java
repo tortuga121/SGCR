@@ -81,7 +81,7 @@ public class DeviceCatalog implements IDeviceCatalog {
     }
 
     @Override
-    public List<Integer> getdevicesbyNif(String nif) {
-        return null;
+    public Set<Integer> getdevicesbyNif(String nif) {
+        return new HashSet<>(nifs.get(nif));
     }
 }

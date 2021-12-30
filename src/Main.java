@@ -35,8 +35,8 @@ public class Main {
         sgcr.addWorker("blanc",157,Manager.class,"157");
 
         for(IDevice d : arr) sgcr.addBudgetRequest(d,129);
-
         IController c = new Controller(sgcr);
         c.exec();
+        System.out.println("acabou");
     }
 }
