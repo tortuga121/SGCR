@@ -91,6 +91,7 @@ public class SGCR implements ISGCR{
 
     @Override
     public boolean login(int id, String pass) throws WorkerDoesNotExist {
+        if(!wcat.existsWorker(id)) throw new WorkerDoesNotExist("Worker: " + id + "does not exist");
         return wcat.login(id,pass);
     }
 
