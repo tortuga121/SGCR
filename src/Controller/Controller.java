@@ -100,7 +100,7 @@ public class Controller implements IController{
                 vbr.getDeviceName().setText("");
                 String pd = vbr.getProblemDescription().getText();
                 vbr.getProblemDescription().setText("");
-                sgcr.addBudgetRequest(new Device( 0 , nif, pd, name), workerID);
+                sgcr.addBudgetRequest(new Device( sgcr.generateNewregistrationCode(), nif, pd, name), workerID);
                 vbr.dispose();
                 view.showPopUpMsg("Pedido de orçamento adicionado.");
             } catch (NumberFormatException | WorkerDoesNotExist | InvalidRegistrationCodeException ex) {
