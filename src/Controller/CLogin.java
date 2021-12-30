@@ -1,5 +1,5 @@
 package Controller;
 
-public class CLogin implements Controller.ICLogin {
+public class CLogin implements ICLogin {
 
 }

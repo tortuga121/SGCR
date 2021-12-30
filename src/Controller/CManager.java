@@ -1,4 +1,4 @@
 package Controller;
 
-public class CManager {
+public class CManager implements ICManager{
 }

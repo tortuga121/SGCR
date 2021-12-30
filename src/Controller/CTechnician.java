@@ -1,4 +1,4 @@
 package Controller;
 
-public class CTechnician {
+public class CTechnician implements ICTechnician {
 }

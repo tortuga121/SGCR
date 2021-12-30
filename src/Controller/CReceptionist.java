@@ -1,4 +1,4 @@
 package Controller;
 
-public class CReceptionist implements Controller.ICReceptionist {
+public class CReceptionist implements ICReceptionist {
 }
