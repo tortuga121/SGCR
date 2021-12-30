@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 
 public class ExpressRepair implements IExpressRepair {
-    private int regCode;
     private String generalDescription;
     private String type;
     public static final HashMap<String,Double> expressTypes;
@@ -19,8 +18,7 @@ public class ExpressRepair implements IExpressRepair {
         // TODO
     }
 
-    public ExpressRepair(int regCode, String generalDescription, String type) {
-        this.regCode = regCode;
+    public ExpressRepair( String generalDescription, String type) {
         this.generalDescription = generalDescription;
         this.type = type;
     }
@@ -30,10 +28,6 @@ public class ExpressRepair implements IExpressRepair {
         return type;
     }
 
-    @Override
-    public int getRegCode() {
-        return regCode;
-    }
     @Override
     public String getGeneralDescription() {
         return generalDescription;

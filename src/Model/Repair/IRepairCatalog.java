@@ -7,7 +7,7 @@ public interface IRepairCatalog {
     void addRepairPlan(IRepairPlan rp) throws DeviceNotFoundException;
     int mostUrgentRepair() throws NoRepairException;
     IRepairPlan getRepairPlan(int regCode) throws NoRepairException;
-    void addExpressrepair(String type, int regcode, String desrp);
+    void addExpressrepair(String type, String desrp);
     void checkForOutdated();
 
 }
