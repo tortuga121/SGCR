@@ -1,6 +1,7 @@
 package View;
 
 import View.Device.VDevice;
+import View.Device.VDeviceList;
 import View.Login.VLogin;
 import View.Manager.VManager;
 import View.Receptionist.VReceptionist;
@@ -11,6 +12,5 @@ public interface IView {
     VTechnician getTechnician();
     VReceptionist getReceptionist();
     VManager getManager();
-    VDevice getDevice();
     void showPopUpMsg(String msg);
 }

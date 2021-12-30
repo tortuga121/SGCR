@@ -5,8 +5,9 @@ import java.awt.*;
 
 public class VRefuseBudget extends JFrame{
     private JPanel mainPanel;
-    private JTextField deviceID;
+    private JTextField nifCliente;
     private JButton saveButton;
+    private JLabel nifLabel;
 
     public VRefuseBudget() {
         super("Refuse Budget Form");
@@ -18,8 +19,8 @@ public class VRefuseBudget extends JFrame{
         this.pack();
     }
 
-    public JTextField getDeviceID() {
-        return deviceID;
+    public JTextField getNIF() {
+        return nifCliente;
     }
 
     public JButton getSaveButton() {

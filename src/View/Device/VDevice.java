@@ -13,7 +13,9 @@ public class VDevice extends JFrame {
     private JTextPane probDescriptionTxt;
     private JLabel nifOwner;
     private JLabel probDescription;
+    private JLabel nameLabel;
     private JTextField nameTxt;
+    private JButton doneButton;
 
     public VDevice(Device d) {
         super("Device");
@@ -29,4 +31,7 @@ public class VDevice extends JFrame {
         this.pack();
     }
 
+    public JButton getDoneButton() {
+        return doneButton;
+    }
 }

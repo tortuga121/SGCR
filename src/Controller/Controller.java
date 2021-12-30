@@ -6,6 +6,8 @@ import Model.ISGCR;
 import Model.SGCR;
 import Model.Worker.*;
 import View.*;
+import View.Device.VDevice;
+import View.Device.VDeviceList;
 import View.Login.VLogin;
 import View.Manager.VManager;
 import View.Receptionist.*;
@@ -13,6 +15,10 @@ import View.Technician.VTechnician;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class Controller implements IController{
     IView view;
@@ -78,14 +84,26 @@ public class Controller implements IController{
         VRefuseBudget vrb = view.getReceptionist().getRefuseBudget();
         vrb.setVisible(true);
         vrb.getSaveButton().addActionListener(e -> {
+            String nif = vrb.getNIF().getText();
             try {
-                int id = Integer.parseInt(vrb.getDeviceID().getText());
-                LocalDate deadline = sgcr.refuseBudget(id);
-                vrb.dispose();
-                view.showPopUpMsg("Reparação cancelada.\nTem até " + deadline.toString() + " para levantar o seu equipamento.");
-            } catch (NumberFormatException | DeviceNotFoundException | WorkerDoesNotExist ex) {
-                view.showPopUpMsg("Equipamento não existe");
+                Set<Integer> regCodes = sgcr.getClientDevices(nif);
+                List<String> l = new ArrayList<>();
+                for (Integer i : regCodes) {
+                    String name = "0";
+                    String s = i + " - Código de registo; " + sgcr.getDeviceName(i) + " - Nome equipamento.";
+                    l.add(s);
+                }
+                VDeviceList vdl = new VDeviceList(nif, l);
+                vdl.getSelectButton().addActionListener(e1 -> {
+                    String selectedValue = vdl.getDeviceList().getSelectedValue();
+                    String regCodeStr = selectedValue.split(" -")[0];
+                    int regCode = Integer.parseInt(regCodeStr);
+                    //VDevice vDevice = new VDevice();
+                });
+            } catch (DeviceNotFoundException ex) {
+                view.showPopUpMsg("NIF Inválido");
             }
+            //view.showPopUpMsg("Reparação cancelada.\nTem até " + deadline.toString() + " para levantar o seu equipamento.");
         });
     }
 
