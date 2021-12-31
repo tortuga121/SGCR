@@ -2,7 +2,12 @@ package Controller;
 
 import Exception.*;
 import Model.Devices.Device;
+import Model.Devices.IDevice;
 import Model.ISGCR;
+import Model.Repair.IRepairPlan;
+import Model.Repair.RepairPlan;
+import Model.Repair.Stage;
+import Model.Repair.Step;
 import Model.SGCR;
 import Model.Worker.*;
 import View.*;
@@ -11,6 +16,9 @@ import View.Device.VDeviceList;
 import View.Login.VLogin;
 import View.Manager.VManager;
 import View.Receptionist.*;
+import View.Technician.VAddStage;
+import View.Technician.VAddStep;
+import View.Technician.VSugestRepairPlan;
 import View.Technician.VTechnician;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -82,8 +90,68 @@ public class Controller implements IController{
             //TODO forms edit repair plan
         });
         vt.getOptions().getSugestPlan().addActionListener(e -> {
-            vt.getPlanSugestion().setVisible(true);
+            execSugestPlan();
         });
+    }
+
+    private void execSugestPlan() {
+        try {
+            Device device = (Device) sgcr.getBudgetRequest();
+            VDevice vDevice = new VDevice(device);
+            VSugestRepairPlan vsrp = new VSugestRepairPlan(Integer.toString(device.getRegCode()));
+            vDevice.setVisible(true);
+            vDevice.getDoneButton().addActionListener(e -> {vDevice.dispose(); vsrp.setVisible(true);});
+
+            ArrayList<Stage> stages = new ArrayList<>();
+            vsrp.getAddStageButton().addActionListener(e -> {
+                if (vsrp.getStageToAdd().getText().equals("") || vsrp.getStageToAdd().getText().equals("escreva descrição da etapa"))
+                    vsrp.getStageToAdd().setText("escreva descrição da etapa");
+                else {
+                    String description = vsrp.getStageToAdd().getText();
+                    vsrp.getStageToAdd().setText("");
+                    VAddStage addStage = new VAddStage(description);
+                    addStage.setVisible(true);
+
+                    addStage.getAdicionarPassoButton().addActionListener(e1 -> {
+                        if (addStage.getStepToAdd().getText().equals("") || addStage.getStepToAdd().getText().equals("escreva a descrição do passo"))
+                            addStage.getStepToAdd().setText("escreva a descrição do passo");
+                        else {
+                            String s = addStage.getStepToAdd().getText();
+                            addStage.getStepToAdd().setText("");
+                            addStage.getListModel().addElement(s);
+                            addStage.getStepList().setModel(addStage.getListModel());
+                        }
+                    });
+
+                    addStage.getSaveButton().addActionListener(e2 -> {
+                        ArrayList<Step> steps = new ArrayList<>();
+                        for (int i = 0; i < addStage.getListModel().getSize(); i++) {
+                            Step s = new Step(addStage.getListModel().get(i));
+                            steps.add(s);
+                        }
+                        stages.add(new Stage(description, steps));
+                        addStage.dispose();
+                    });
+                }
+            });
+
+            vsrp.getSaveButton().addActionListener(e3 -> {
+                try {
+                    this.sgcr.sugestRepairPlan(new RepairPlan(
+                            sgcr.getMostUrgentRepair().getRegCode(),
+                            vsrp.getDescription().getText(),
+                            stages,
+                            Double.parseDouble(vsrp.getRepairCost().getText()),
+                            LocalDate.parse(vsrp.getDeadline().getText())
+                    ));
+                    view.showPopUpMsg("Sugestão pronta.");
+                } catch (DeviceNotFoundException | NumberFormatException | NoRepairException ex) {
+                    view.showPopUpMsg(ex.getMessage());
+                }
+            });
+        } catch (DeviceNotFoundException ex) {
+            view.showPopUpMsg(ex.getMessage());
+        }
     }
 
     public void execManager(int workerID) {
@@ -230,4 +298,6 @@ public class Controller implements IController{
             }
         });
     }
+
+
 }
