@@ -1,9 +1,7 @@
 import Controller.*;
 import Model.*;
 import Model.Devices.Device;
-import Model.Devices.DeviceCatalog;
 import Model.Devices.IDevice;
-import Model.Devices.*;
 import Model.Repair.*;
 import Model.Worker.*;
 import Exception.*;

@@ -1,7 +1,5 @@
 package Model.Worker;
 
-import Model.Devices.IDevice;
-
 public interface IReceptionist extends IWorker{
     /**
      * Método que devolve o número total de entregas concluídas de equipamentos aos clientes

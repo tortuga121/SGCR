@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.time.Year;
 import java.util.*;
-import java.util.stream.Collectors;
+
 
 public class SGCR implements ISGCR{
     private IWorkersCatalog wcat;
