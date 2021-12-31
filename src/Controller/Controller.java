@@ -3,6 +3,7 @@ package Controller;
 import Exception.*;
 import Model.Devices.Device;
 import Model.ISGCR;
+import Model.Repair.IRepairPlan;
 import Model.Repair.RepairPlan;
 import Model.Repair.Stage;
 import Model.Repair.Step;
@@ -13,11 +14,11 @@ import View.Device.VDevice;
 import View.Device.VDeviceList;
 import View.Login.VLogin;
 import View.Manager.VAddEval;
-import View.Manager.VManager;
 import View.Manager.VManagerOptions;
 import View.Manager.VTable;
 import View.Receptionist.*;
 import View.Technician.VAddStage;
+import View.Technician.VStep;
 import View.Technician.VSugestRepairPlan;
 import View.Technician.VTechnician;
 
@@ -88,7 +89,7 @@ public class Controller implements IController{
         VTechnician vt = this.view.getTechnician();
         vt.getOptions().setVisible(true);
         vt.getOptions().getEditPlan().addActionListener(e -> {
-            execExecPlan();
+            execExecPlan(workerID);
         });
         vt.getOptions().getSugestPlan().addActionListener(e -> {
             execSugestPlan();
@@ -96,6 +97,7 @@ public class Controller implements IController{
         vt.getOptions().getUnvailable().addActionListener(e -> {
             try {
                 sgcr.setAvailable(workerID, false);
+                view.showPopUpMsg("Indisponível");
             } catch (WorkerDoesNotExist ex) {
                 view.showPopUpMsg(ex.getMessage());
             }
@@ -103,14 +105,33 @@ public class Controller implements IController{
         vt.getOptions().getAvailable().addActionListener(e -> {
             try {
                 sgcr.setAvailable(workerID, true);
+                view.showPopUpMsg("Disponível");
             } catch (WorkerDoesNotExist ex) {
                 view.showPopUpMsg(ex.getMessage());
             }
         });
     }
 
-    private void execExecPlan() {
-
+    private void execExecPlan(int workerID) {
+        try {
+            IRepairPlan rp = sgcr.getMostUrgentRepair();
+            VStep step = new VStep(rp.getStageCurrent().getCurrentStep().getDescription());
+            step.setVisible(true);
+            step.getSaveButton().addActionListener(e -> {
+                try {
+                    sgcr.repairNextStep(
+                            rp.getRegCode(), workerID,
+                            Double.parseDouble(step.getCost().getText()),
+                            Double.parseDouble(step.getHours().getText()));
+                    step.dispose();
+                    view.showPopUpMsg("Passo Atualizado.");
+                } catch (WorkerDoesNotExist | OutOfbudgetException | NoMoreStepsException | NoRepairException ex1) {
+                    view.showPopUpMsg(ex1.getMessage());
+                }
+            });
+        } catch (NoRepairException ex2) {
+            view.showPopUpMsg(ex2.getMessage());
+        }
     }
 
     private void execSugestPlan() {
