@@ -31,7 +31,7 @@ public interface IDeviceCatalog {
      * @return retorna um equipamento com as respetivas informações para a reparação
      * @throws DeviceNotFoundException
      */
-    IDevice getOldestRequest() throws DeviceNotFoundException;
+    int getOldestRequest() throws DeviceNotFoundException;
     boolean existsDevice(int regCode);
 
     /**

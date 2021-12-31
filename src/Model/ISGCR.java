@@ -19,7 +19,7 @@ public interface ISGCR {
     double makeExpressRepair(String type, int techId, int recepId) throws DeviceNotFoundException, WorkerDoesNotExist;
     Class<?> getWorkerType(int id) throws WorkerDoesNotExist;
     boolean login(int id, String pass) throws WorkerDoesNotExist;
-    IDevice getBudgetRequest() throws DeviceNotFoundException;
+    int getBudgetRequest() throws DeviceNotFoundException;
     void checkForDealines();
     void deliverDevice(int recepId) throws WorkerDoesNotExist;
     void addWorker(String name, int id, Class<?> c, String password);

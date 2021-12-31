@@ -46,8 +46,8 @@ public class SGCR implements ISGCR{
 
     @Override
     public void sugestRepairPlan(IRepairPlan rp) throws DeviceNotFoundException {
-        if(dcat.getOldestRequest().getRegCode() != rp.getRegCode())
-            throw new DeviceNotFoundException("Not the oldest device" + rp.getRegCode());
+        if(dcat.getOldestRequest() != rp.getRegCode())
+            throw new DeviceNotFoundException("Not the oldest device " + rp.getRegCode() + " shoud be " + dcat.getOldestRequest());
         rcat.addRepairPlan(rp);
         dcat.popOldestRequest();
     }
@@ -99,7 +99,7 @@ public class SGCR implements ISGCR{
     }
 
     @Override
-    public IDevice getBudgetRequest() throws DeviceNotFoundException {
+    public int getBudgetRequest() throws DeviceNotFoundException {
         return dcat.getOldestRequest();
     }
 
