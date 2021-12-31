@@ -56,10 +56,6 @@ public class RepairPlan implements IRepairPlan {
         return null;
     }
 
-    @Override
-    public double totalCost() {
-        return 0;
-    }
 
     @Override
     public IRepairPlan clone() {

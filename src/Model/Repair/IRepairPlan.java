@@ -8,10 +8,19 @@ public interface IRepairPlan extends Comparable{
     int getRegCode();
     String getDescription();
     LocalDateTime totalTime();
-    double totalCost();
     IRepairPlan clone();
     int repairNext(double cost, double time) throws NoMoreStepsException, OutOfbudgetException;
+
+    /**
+     * Calcula a soma de toda de todos os tempos dos steps
+     * @return tempo total de reparação
+     */
     double getTimeofRepair();
     LocalDate getDeadline();
+
+    /**
+     * calcula o a soma do custo de todos so steps
+     * @return preço total
+     */
     double getTotalCost();
 }
