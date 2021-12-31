@@ -9,5 +9,5 @@ public interface IRepairCatalog {
     IRepairPlan getRepairPlan(int regCode) throws NoRepairException;
     void addExpressrepair(String type);
     void checkForOutdated();
-
+    void addToRepair(int regcode);
 }

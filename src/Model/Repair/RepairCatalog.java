@@ -32,6 +32,12 @@ public class RepairCatalog implements IRepairCatalog{
     }
 
     @Override
+    public void addToRepair(int regcode) {
+        toApprove.put(regcode,LocalDateTime.now().plusDays(30));
+        toRepair.remove(regcode);
+    }
+
+    @Override
     public int mostUrgentRepair() throws NoRepairException{
        if(toRepair.size() < 1) throw new NoRepairException("No more repairs to do");
        return toRepair.first();
@@ -66,5 +72,6 @@ public class RepairCatalog implements IRepairCatalog{
             throw new DeviceNotFoundException("Repair plan with code " + regCode + " does not exist");
         toRepair.add(regCode);
     }
+
 
 }

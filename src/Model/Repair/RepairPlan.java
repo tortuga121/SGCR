@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import Exception.NoMoreStepsException;
+import Exception.*;
 
 public class RepairPlan implements IRepairPlan {
     private int regCode;
@@ -67,8 +67,9 @@ public class RepairPlan implements IRepairPlan {
     }
 
     @Override
-    public int repairNext(double cost, double time) throws NoMoreStepsException {
-       if(current_stage >= stages.size()) throw new NoMoreStepsException();
+    public int repairNext(double cost, double time) throws NoMoreStepsException, OutOfbudgetException {
+        if(getTotalCost() > price*1.2) throw new OutOfbudgetException("Out of budget");
+        if(current_stage >= stages.size()) throw new NoMoreStepsException();
         Stage s = stages.get(current_stage);
         s.repairStep(cost, time);
         current_stage++;

@@ -60,9 +60,12 @@ public class SGCR implements ISGCR{
     }
 
     @Override
-    public void repairNextStep(int regCode, int techId, double cost, double time) throws WorkerDoesNotExist, NoRepairException, NoMoreStepsException {
+    public void repairNextStep(int regCode, int techId, double cost, double time) throws WorkerDoesNotExist, NoRepairException, NoMoreStepsException, OutOfbudgetException {
         int stage = rcat.getRepairPlan(regCode).repairNext(cost,time);
         wcat.updateTechicianStep(regCode,stage,techId);
+    }
+    public void suspendRepairPlan(int regcode) {
+
     }
 
     @Override
