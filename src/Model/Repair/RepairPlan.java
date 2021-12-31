@@ -68,7 +68,7 @@ public class RepairPlan implements IRepairPlan {
         if(current_stage >= stages.size()) throw new NoMoreStepsException();
         Stage s = stages.get(current_stage);
         s.repairStep(cost, time);
-        current_stage++;
+        if(!s.hasSteps()) current_stage++;
         return current_stage-1;
     }
 

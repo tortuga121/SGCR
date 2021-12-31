@@ -10,7 +10,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Main {
-    public static void main(String[] args) throws InvalidRegistrationCodeException, WorkerDoesNotExist, DeviceNotFoundException {
+    public static void main(String[] args) throws InvalidRegistrationCodeException, WorkerDoesNotExist, DeviceNotFoundException, NoMoreStepsException, NoRepairException, OutOfbudgetException {
         SGCR sgcr = new SGCR();
 
         ArrayList<IDevice> arr = new ArrayList<>();
@@ -35,9 +35,14 @@ public class Main {
         ArrayList<Step> s = new ArrayList<>();
         s.add(new Step("este é o step 1"));
         s.add(new Step("este é o step2"));
+        ArrayList<Step> s2 = new ArrayList<>();
+        s2.add(new Step("este é o step 12"));
+        s2.add(new Step("este é o step22"));
         ArrayList<Stage> ss = new ArrayList<>();
         ss.add(new Stage("este é o stage",s));
+        ss.add(new Stage("este é o stage2",s2));
         sgcr.sugestRepairPlan(new RepairPlan(0,"arranja", ss,200, LocalDate.now().plusDays(2)));
+        sgcr.acceptBudget(0);
         IController c = new Controller(sgcr);
         c.exec();
     }
