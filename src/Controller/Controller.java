@@ -88,11 +88,29 @@ public class Controller implements IController{
         VTechnician vt = this.view.getTechnician();
         vt.getOptions().setVisible(true);
         vt.getOptions().getEditPlan().addActionListener(e -> {
-            //TODO forms edit repair plan
+            execExecPlan();
         });
         vt.getOptions().getSugestPlan().addActionListener(e -> {
             execSugestPlan();
         });
+        vt.getOptions().getUnvailable().addActionListener(e -> {
+            try {
+                sgcr.setAvailable(workerID, false);
+            } catch (WorkerDoesNotExist ex) {
+                view.showPopUpMsg(ex.getMessage());
+            }
+        });
+        vt.getOptions().getAvailable().addActionListener(e -> {
+            try {
+                sgcr.setAvailable(workerID, true);
+            } catch (WorkerDoesNotExist ex) {
+                view.showPopUpMsg(ex.getMessage());
+            }
+        });
+    }
+
+    private void execExecPlan() {
+
     }
 
     private void execSugestPlan() {

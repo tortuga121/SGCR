@@ -8,6 +8,8 @@ public class VTechnicianOptions extends JFrame {
     private JLabel options;
     private JButton sugestPlan;
     private JButton editPlan;
+    private JButton unavailable;
+    private JButton available;
 
     public VTechnicianOptions() {
         super("Technician Option Menu");
@@ -25,5 +27,13 @@ public class VTechnicianOptions extends JFrame {
 
     public JButton getEditPlan() {
         return editPlan;
+    }
+
+    public JButton getUnvailable() {
+        return unavailable;
+    }
+
+    public JButton getAvailable() {
+        return available;
     }
 }
