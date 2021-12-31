@@ -65,7 +65,7 @@ public class RepairPlan implements IRepairPlan {
     @Override
     public int repairNext(double cost, double time) throws NoMoreStepsException, OutOfbudgetException {
         if(getTotalCost() > price*1.2) throw new OutOfbudgetException("Out of budget");
-        if(current_stage >= stages.size()) throw new NoMoreStepsException();
+        if(current_stage >= stages.size()) throw new NoMoreStepsException("No more steps");
         Stage s = stages.get(current_stage);
         s.repairStep(cost, time);
         if(!s.hasSteps()) current_stage++;
@@ -73,7 +73,8 @@ public class RepairPlan implements IRepairPlan {
     }
 
     @Override
-    public Stage getStageCurrent() {
+    public Stage getStageCurrent() throws NoMoreStepsException{
+        if(current_stage >= stages.size()) throw new NoMoreStepsException("No more steps");
         return stages.get(current_stage);
     }
 

@@ -36,7 +36,8 @@ public class Stage {
         s.setTime(time);
         current_step++;
     }
-    public Step getCurrentStep() {
+    public Step getCurrentStep() throws NoMoreStepsException{
+        if(current_step >= steps.size()) throw new NoMoreStepsException("No more steps");
         return steps.get(current_step);
     }
     public double getTotalCost() {

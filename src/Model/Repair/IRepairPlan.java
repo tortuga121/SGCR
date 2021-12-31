@@ -10,7 +10,7 @@ public interface IRepairPlan extends Comparable{
     LocalDateTime totalTime();
     IRepairPlan clone();
     int repairNext(double cost, double time) throws NoMoreStepsException, OutOfbudgetException;
-    Stage getStageCurrent();
+    Stage getStageCurrent() throws NoMoreStepsException;
     /**
      * Calcula a soma de toda de todos os tempos dos steps
      * @return tempo total de reparação
