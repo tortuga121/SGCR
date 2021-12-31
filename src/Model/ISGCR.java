@@ -170,4 +170,7 @@ public interface ISGCR {
      * @return retorna um mapa com as participações de cada técnico
      */
     HashMap<Integer,HashMap<Integer, HashSet<Integer>>> techDetailStats();
+
+    void setAvailable(int techID, boolean av) throws WorkerDoesNotExist;
+
 }

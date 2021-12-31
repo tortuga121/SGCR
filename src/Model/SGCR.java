@@ -219,5 +219,12 @@ public class SGCR implements ISGCR{
         return wcat.getParticipations();
     }
 
+    @Override
+    public void setAvailable(int techID, boolean av) throws WorkerDoesNotExist {
+        if(wcat.existsTechnician(techID))
+            ((Technician)wcat.getWorker(techID)).setAvailable(av);
+        else throw new WorkerDoesNotExist();
+    }
+
 
 }
