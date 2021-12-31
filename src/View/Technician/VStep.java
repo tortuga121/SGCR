@@ -3,7 +3,7 @@ package View.Technician;
 import javax.swing.*;
 import java.awt.*;
 
-public class VAddStep extends JFrame {
+public class VStep extends JFrame {
     private JPanel mainPanel;
     private JLabel descriptionLabel;
     private JTextField description;
@@ -13,8 +13,9 @@ public class VAddStep extends JFrame {
     private JLabel hoursLabel;
     private JButton saveButton;
 
-    public VAddStep() {
-        super("Add Stage Form");
+    public VStep(String description) {
+        super("Step");
+        this.description.setText(description);
         this.mainPanel.setPreferredSize(new Dimension(500, 500));
         this.mainPanel.revalidate();
         this.mainPanel.repaint();
