@@ -36,6 +36,9 @@ public class Stage {
         s.setTime(time);
         current_step++;
     }
+    public Step getCurrentStep() {
+        return steps.get(current_step);
+    }
     public double getTotalCost() {
         return  steps.stream().mapToDouble(Step::getCost).sum();
     }

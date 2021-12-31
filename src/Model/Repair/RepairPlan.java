@@ -73,6 +73,13 @@ public class RepairPlan implements IRepairPlan {
     }
 
     @Override
+    public Stage getStageCurrent() {
+        return stages.get(current_stage);
+    }
+
+
+
+    @Override
     public double getTimeofRepair() {
        return stages.stream().mapToDouble(Stage::getTime).sum();
     }
