@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class ExpressRepair implements IExpressRepair {
-    private String generalDescription;
+
     private String type;
     public static final HashMap<String,Double> expressTypes;
     static {
@@ -18,8 +18,8 @@ public class ExpressRepair implements IExpressRepair {
         // TODO
     }
 
-    public ExpressRepair( String generalDescription, String type) {
-        this.generalDescription = generalDescription;
+    public ExpressRepair(String type) {
+
         this.type = type;
     }
 
@@ -28,10 +28,6 @@ public class ExpressRepair implements IExpressRepair {
         return type;
     }
 
-    @Override
-    public String getGeneralDescription() {
-        return generalDescription;
-    }
     
     @Override
     public List<String> getExpressServices() {

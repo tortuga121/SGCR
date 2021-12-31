@@ -45,8 +45,8 @@ public class RepairCatalog implements IRepairCatalog{
     }
 
     @Override
-    public void addExpressrepair(String type, String desrp) {
-        expressRepairs.add(new ExpressRepair(desrp,type));
+    public void addExpressrepair(String type) {
+        expressRepairs.add(new ExpressRepair(type));
     }
 
     public void addRepairPlan(IRepairPlan rp) {
