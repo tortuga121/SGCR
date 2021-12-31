@@ -30,7 +30,7 @@ public class Stage {
         return steps.stream().mapToDouble(Step::getTime).sum();
     }
     public void repairStep(double cost, double time) throws NoMoreStepsException {
-        if(current_step >= steps.size()) throw new NoMoreStepsException();
+        if(current_step >= steps.size()) throw new NoMoreStepsException("No more stages or steps");
         Step s = steps.get(current_step);
         s.setCost(cost);
         s.setTime(time);
