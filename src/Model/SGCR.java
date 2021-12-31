@@ -7,9 +7,7 @@ import Model.Worker.*;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.Year;
-import java.util.Map;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class SGCR implements ISGCR{
@@ -69,7 +67,7 @@ public class SGCR implements ISGCR{
     }
 
     @Override
-    public Map<Integer,Integer> evaluateCenterFunctioning(){
+    public Map<Integer,Double> evaluateCenterFunctioning(){
         return wcat.num_rep_technicians();
     }
 
@@ -161,7 +159,65 @@ public class SGCR implements ISGCR{
         return dcat.getdevice(id).clone();
     }
 
+    private double getDurationAverage(int id) {
+        try {
+            OptionalDouble optionalDouble = ((ITechnician) wcat.getWorker(id)).getPlans().stream()
+                    .mapToDouble(regcode -> {
+                        try {
+                            return rcat.getRepairPlan(regcode).getTimeofRepair();
+                        } catch (NoRepairException ignored) {
+                            return 0;
+                        }
+                    })
+                    .average();
+            if (optionalDouble.isPresent()) return optionalDouble.getAsDouble();
+        } catch (WorkerDoesNotExist e){
+            return 0;
+        }
+        return 0;
+    }
+    private double getDeviationAverage(int id) {
+        double deviation = getDurationAverage(id);
+        try {
+            OptionalDouble optionalDouble = ((ITechnician) wcat.getWorker(id)).getPlans().stream()
+                    .mapToDouble(regcode -> {
+                        try {
+                            return Math.abs(rcat.getRepairPlan(regcode).getTimeofRepair() - deviation);
+                        } catch (NoRepairException ignored) {
+                            return 0;
+                        }
+                    })
+                    .average();
+            if (optionalDouble.isPresent()) return optionalDouble.getAsDouble();
+        } catch (WorkerDoesNotExist e){
+            return 0;
+        }
+        return 0;
+    }
 
+    public HashMap<Integer, ArrayList<Double>> techstats() {
+        HashMap<Integer, ArrayList<Double>> ans = new HashMap<>();
+        wcat.getWorkers().stream()
+                .filter(w -> w.getClass().equals(Technician.class))
+                .forEach(w ->{
+                    ArrayList<Double> arr =  new ArrayList<>();
+                    arr.add(((Technician) w).getTotalParticipations());
+                    arr.add(getDurationAverage(w.getId()));
+                    arr.add(getDeviationAverage(w.getId()));
+                    ans.put(w.getId(),arr);
+                });
+        return ans;
+    }
+
+    @Override
+    public HashMap<Integer, ArrayList<Integer>> recepStats() {
+       return wcat.recepStats();
+    }
+
+    @Override
+    public HashMap<Integer, HashMap<Integer, HashSet<Integer>>> techDetailStats() {
+        return wcat.getParticipations();
+    }
 
 
 }

@@ -1,9 +1,7 @@
 package Model.Worker;
 
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import Exception.*;
@@ -18,8 +16,9 @@ public class WorkersCatalog implements IWorkersCatalog{
         logins = new HashMap<>();
     }
 
+
     @Override
-    public Map<Integer, Integer> num_rep_technicians() {
+    public Map<Integer, Double> num_rep_technicians() {
       return workers.values().stream()
               .filter(e -> e.getClass() == Technician.class)
               .collect(Collectors.toMap
@@ -96,10 +95,39 @@ public class WorkersCatalog implements IWorkersCatalog{
     @Override
     public int getAvailableTech() throws WorkerDoesNotExist {
         Optional<IWorker> opW =  workers.values().stream()
-                .filter(a -> a.getClass() == Technician.class && ((Technician) a).isAvailable())
+                .filter(a -> a.getClass().equals(Technician.class) && ((Technician) a).isAvailable())
                 .findFirst();
         if(opW.isEmpty()) throw new WorkerDoesNotExist("No workers available");
         return opW.get().getId();
+    }
+    public ArrayList<IWorker> getWorkers() {
+        return workers.values().stream()
+                .filter(a -> a.getClass() == Technician.class && ((Technician) a)
+                .isAvailable())
+                .collect(Collectors.toCollection(ArrayList::new))  ;
+    }
+
+    @Override
+    public HashMap<Integer, ArrayList<Integer>> recepStats() {
+        HashMap<Integer, ArrayList<Integer>> ans = new HashMap<>();
+        workers.values().stream().filter(w -> w.getClass().equals(Receptionist.class))
+                .forEach( r -> {
+                    ArrayList<Integer> arr = new ArrayList<>();
+                    arr.add(((Receptionist) r).totalDeliveries());
+                    arr.add(((Receptionist) r).totalReceptions());
+                    ans.put(r.getId(),arr);
+                });
+        return ans;
+    }
+
+    @Override
+    public HashMap<Integer, HashMap<Integer, HashSet<Integer>>> getParticipations() {
+        HashMap<Integer, HashMap<Integer, HashSet<Integer>>> ans = new HashMap<>();
+        workers.values().stream().filter(w -> w.getClass().equals(Technician.class))
+                .forEach(r -> {
+                    ans.put(r.getId(), ((Technician) r).getParticipations());
+                });
+        return ans;
     }
 
 
