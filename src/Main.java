@@ -38,7 +38,6 @@ public class Main {
         ArrayList<Stage> ss = new ArrayList<>();
         ss.add(new Stage("este é o stage",s));
         sgcr.sugestRepairPlan(new RepairPlan(0,"arranja", ss,200, LocalDate.now().plusDays(2)));
-
         IController c = new Controller(sgcr);
         c.exec();
     }
