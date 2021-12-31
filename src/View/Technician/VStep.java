@@ -16,7 +16,7 @@ public class VStep extends JFrame {
     public VStep(String description) {
         super("Step");
         this.description.setText(description);
-        this.mainPanel.setPreferredSize(new Dimension(500, 500));
+        this.mainPanel.setPreferredSize(new Dimension(400, 300));
         this.mainPanel.revalidate();
         this.mainPanel.repaint();
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);

@@ -32,7 +32,7 @@ public class Manager extends Worker implements IManager {
     }
 
     @Override
-    public Manager clone() { //TODO
+    public Manager clone() {
         return new Manager(this);
     }
 }

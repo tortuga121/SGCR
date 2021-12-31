@@ -129,7 +129,7 @@ public class Controller implements IController{
                     view.showPopUpMsg(ex1.getMessage());
                 }
             });
-        } catch (NoRepairException ex2) {
+        } catch (NoRepairException | NoMoreStepsException ex2) {
             view.showPopUpMsg(ex2.getMessage());
         }
     }
