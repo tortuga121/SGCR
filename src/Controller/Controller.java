@@ -2,9 +2,7 @@ package Controller;
 
 import Exception.*;
 import Model.Devices.Device;
-import Model.Devices.IDevice;
 import Model.ISGCR;
-import Model.Repair.IRepairPlan;
 import Model.Repair.RepairPlan;
 import Model.Repair.Stage;
 import Model.Repair.Step;
@@ -17,12 +15,10 @@ import View.Login.VLogin;
 import View.Manager.VManager;
 import View.Receptionist.*;
 import View.Technician.VAddStage;
-import View.Technician.VAddStep;
 import View.Technician.VSugestRepairPlan;
 import View.Technician.VTechnician;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -195,7 +191,7 @@ public class Controller implements IController{
                                     view.showPopUpMsg("Reparação cancelada.\nTem até " + deadline.toString() + " para levantar o seu equipamento.");
                                 }
                                 else {
-                                    sgcr.aceptBudget(regCode);
+                                    sgcr.acceptBudget(regCode);
                                     vDevice.dispose();
                                     vdl.dispose();
                                     vDevice.dispose();

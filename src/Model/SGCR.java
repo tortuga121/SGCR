@@ -40,7 +40,7 @@ public class SGCR implements ISGCR{
     }
 
     @Override
-    public void aceptBudget(int regCode) throws DeviceNotFoundException {
+    public void acceptBudget(int regCode) throws DeviceNotFoundException {
         rcat.approveBudget(regCode);
     }
 
