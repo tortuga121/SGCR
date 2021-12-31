@@ -19,6 +19,11 @@ public class RepairPlan implements IRepairPlan {
         return deadline;
     }
 
+    @Override
+    public double getTotalCost() {
+       return stages.stream().mapToDouble(Stage::getTotalCost).sum();
+    }
+
     public RepairPlan(int regCode, String generalDescription, ArrayList<Stage> stages, double price) {
         this.regCode = regCode;
         this.generalDescription = generalDescription;

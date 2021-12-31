@@ -11,6 +11,11 @@ public class Step {
         this.description = description;
         this.hours = hours;
     }
+    public Step(String description) {
+        this.cost = 0;
+        this.description = description;
+        this.hours = 0;
+    }
 
     public Step(Step s) {
         this.cost = s.cost;
