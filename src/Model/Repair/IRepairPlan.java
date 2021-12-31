@@ -17,7 +17,6 @@ public interface IRepairPlan extends Comparable{
      */
     double getTimeofRepair();
     LocalDate getDeadline();
-
     /**
      * calcula o a soma do custo de todos so steps
      * @return preço total
