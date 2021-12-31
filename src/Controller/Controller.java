@@ -13,14 +13,16 @@ import View.Device.VDevice;
 import View.Device.VDeviceList;
 import View.Login.VLogin;
 import View.Manager.VManager;
+import View.Manager.VManagerOptions;
+import View.Manager.VTable;
 import View.Receptionist.*;
 import View.Technician.VAddStage;
 import View.Technician.VSugestRepairPlan;
 import View.Technician.VTechnician;
+
+import javax.swing.table.DefaultTableModel;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Controller implements IController{
     IView view;
@@ -151,8 +153,87 @@ public class Controller implements IController{
     }
 
     public void execManager(int workerID) {
-        VManager vm = this.view.getManager();
-        //TODO
+        VManagerOptions vm = this.view.getManager().getOptions();
+        vm.setVisible(true);
+        vm.getReceptionistInfo().addActionListener(e -> {
+            execRecepStats();
+        });
+        vm.getTechInfo().addActionListener(e -> {
+            execTechStats();
+        });
+        vm.getTechInterventions().addActionListener(e -> {
+            execTechDetailStats();
+        });
+        vm.getAddInfo().addActionListener(e -> {
+
+        });
+    }
+
+    private void execTechDetailStats() {
+        HashMap<Integer, HashMap<Integer, HashSet<Integer>>> m = sgcr.techDetailStats();
+        Vector<String> header = new Vector<>();
+        header.add("ID do Técnico");
+        header.add("ID de Reparação");
+        header.add("Número do Stage");
+        Vector<Vector<String>> data = new Vector<>();
+        m.forEach((k,v) -> {
+            Vector<String> tmp = new Vector<>();
+            tmp.add(k.toString());
+            v.forEach((k1, v1) -> {
+                tmp.add(k1.toString());
+                v1.forEach(v2 -> {
+                    tmp.add(v2.toString());
+                });
+            });
+            data.add(tmp);
+        });
+        DefaultTableModel tableModel = new DefaultTableModel();
+        tableModel.setDataVector(data, header);
+        VTable vt = new VTable("Technician Detail Stats", tableModel);
+        vt.setVisible(true);
+    }
+
+    private void execTechStats() {
+        HashMap<Integer, ArrayList<Double>> m = sgcr.techstats();
+        Vector<String> header = new Vector<>();
+        header.add("ID do Técnico");
+        header.add("Número Participações");
+        header.add("Duração Média");
+        header.add("Desvio Médio");
+        Vector<Vector<String>> data = new Vector<>();
+        m.forEach((k,v) -> {
+            Vector<String> tmp = new Vector<>();
+            tmp.add(k.toString());
+            v.forEach(v1 -> {
+                tmp.add(v1.toString());
+            });
+            data.add(tmp);
+        });
+        DefaultTableModel tableModel = new DefaultTableModel();
+        tableModel.setDataVector(data, header);
+        VTable vt = new VTable("Technician Stats", tableModel);
+        vt.setVisible(true);
+    }
+
+    private void execRecepStats() {
+        HashMap<Integer, ArrayList<Integer>> m = sgcr.recepStats();
+        Vector<String> header = new Vector<>();
+        header.add("ID do Rececionista");
+        header.add("Receções Efetuadas");
+        header.add("Entregas Realizadas");
+        Vector<Vector<String>> data = new Vector<>();
+        m.forEach((k,v) -> {
+            Vector<String> tmp = new Vector<>();
+            tmp.add(k.toString());
+            v.forEach(v1 -> {
+                tmp.add(v1.toString());
+            });
+            data.add(tmp);
+        });
+        DefaultTableModel tableModel = new DefaultTableModel();
+        tableModel.setDataVector(data, header);
+        VTable vt = new VTable("Receptionist Stats", tableModel);
+        vt.setVisible(true);
     }
 
     public void execEditBudget(boolean aprove) {

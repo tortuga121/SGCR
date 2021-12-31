@@ -5,6 +5,11 @@ import java.awt.*;
 
 public class VManagerOptions extends JFrame {
     private JPanel mainPanel;
+    private JLabel optionsLabel;
+    private JButton techInfo;
+    private JButton receptionistInfo;
+    private JButton techInterventions;
+    private JButton addInfo;
 
     public VManagerOptions() {
         super("Manager Options");
@@ -14,5 +19,21 @@ public class VManagerOptions extends JFrame {
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setContentPane(mainPanel);
         this.pack();
+    }
+
+    public JButton getAddInfo() {
+        return addInfo;
+    }
+
+    public JButton getTechInfo() {
+        return techInfo;
+    }
+
+    public JButton getReceptionistInfo() {
+        return receptionistInfo;
+    }
+
+    public JButton getTechInterventions() {
+        return techInterventions;
     }
 }

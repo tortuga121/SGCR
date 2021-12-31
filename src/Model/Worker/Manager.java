@@ -15,11 +15,12 @@ public class Manager extends Worker implements IManager {
     }
     public Manager(String name, int id) {
         super(name, id);
+        month_eval = new HashMap<>();
     }
     public Manager(Manager m) {
         super(m);
-        month_eval = new HashMap<>(
-                month_eval.entrySet()
+        this.month_eval = new HashMap<>(
+                m.month_eval.entrySet()
                         .stream()
                         .collect(Collectors.toMap(Map.Entry<Year, HashMap<Month ,String>>::getKey,
                                v -> new HashMap<>( v.getValue()
@@ -31,7 +32,7 @@ public class Manager extends Worker implements IManager {
     }
 
     @Override
-    public Worker clone() { //TODO
+    public Manager clone() { //TODO
         return new Manager(this);
     }
 }

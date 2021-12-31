@@ -113,8 +113,8 @@ public class WorkersCatalog implements IWorkersCatalog{
         workers.values().stream().filter(w -> w.getClass().equals(Receptionist.class))
                 .forEach( r -> {
                     ArrayList<Integer> arr = new ArrayList<>();
-                    arr.add(((Receptionist) r).totalDeliveries());
                     arr.add(((Receptionist) r).totalReceptions());
+                    arr.add(((Receptionist) r).totalDeliveries());
                     ans.put(r.getId(),arr);
                 });
         return ans;
