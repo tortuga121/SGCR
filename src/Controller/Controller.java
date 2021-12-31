@@ -12,6 +12,7 @@ import View.*;
 import View.Device.VDevice;
 import View.Device.VDeviceList;
 import View.Login.VLogin;
+import View.Manager.VAddEval;
 import View.Manager.VManager;
 import View.Manager.VManagerOptions;
 import View.Manager.VTable;
@@ -22,6 +23,8 @@ import View.Technician.VTechnician;
 
 import javax.swing.table.DefaultTableModel;
 import java.time.LocalDate;
+import java.time.Month;
+import java.time.Year;
 import java.util.*;
 
 public class Controller implements IController{
@@ -165,7 +168,21 @@ public class Controller implements IController{
             execTechDetailStats();
         });
         vm.getAddInfo().addActionListener(e -> {
-
+            VAddEval vae = new VAddEval();
+            vae.setVisible(true);
+            vae.getSaveButton().addActionListener(e1 -> {
+                try {
+                    sgcr.makeMonthEval(
+                            Year.parse(vae.getYear().getText()),
+                            Month.of(Integer.parseInt(vae.getMonth().getText())),
+                            vae.getDescription().getText(),
+                            workerID);
+                    vae.dispose();
+                    view.showPopUpMsg("Avaliação adicionada.");
+                } catch (WorkerDoesNotExist ex) {
+                    view.showPopUpMsg(ex.getMessage());
+                }
+            });
         });
     }
 
