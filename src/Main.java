@@ -37,8 +37,5 @@ public class Main {
         sgcr.refuseBudget(0);
         IController c = new Controller(sgcr);
         c.exec();
-
-        System.out.println("acabou");
-
     }
 }

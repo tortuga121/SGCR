@@ -11,7 +11,7 @@ public class Technician extends Worker implements ITechnician{
 
     public Technician(String nome, int id) {
         super(nome,id);
-        available = false;
+        available = true;
         participations = new HashMap<>();
     }
 

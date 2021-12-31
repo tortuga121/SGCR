@@ -64,7 +64,7 @@ public class Controller implements IController{
             execEditBudget(true);
         });
         vr.getReceptionistOptions().getExpressRequestButton().addActionListener(e -> {
-            execExpressRequest();
+            execExpressRequest(workerID);
         });
         vr.getReceptionistOptions().getPickupButton().addActionListener(e -> {
             execPickUp(workerID);
@@ -214,7 +214,20 @@ public class Controller implements IController{
         });
     }
 
-    private void execExpressRequest() {
-
+    private void execExpressRequest(int workerID) {
+        VExpressRequest ve = this.view.getReceptionist().getExpressRequest();
+        ve.setVisible(true);
+        ve.getSaveButton().addActionListener(e -> {
+            String type = ve.getRepairType().getText();
+            try {
+                int techID = sgcr.availableTechnician();
+                double cost = sgcr.makeExpressRepair(type,techID,workerID);
+                ve.dispose();
+                view.showPopUpMsg("Reparação Expresso efetuada com um custo de " + cost + ".");
+            }
+            catch (WorkerDoesNotExist | DeviceNotFoundException ex) {
+                view.showPopUpMsg(ex.getMessage());
+            }
+        });
     }
 }

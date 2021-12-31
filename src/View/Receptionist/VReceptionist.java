@@ -10,6 +10,7 @@ public class VReceptionist {
         this.deviceByClient = new VClientNIF();
         this.requestBudget = new VBudgetRequest();
         this.options = new VReceptionistOptions();
+        this.expressRequest = new VExpressRequest();
     }
 
     public VBudgetRequest getRequestBudget() {
