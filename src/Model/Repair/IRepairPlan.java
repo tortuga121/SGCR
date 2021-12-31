@@ -1,5 +1,6 @@
 package Model.Repair;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import Exception.*;
@@ -11,6 +12,6 @@ public interface IRepairPlan extends Comparable{
     IRepairPlan clone();
     int repairNext(double cost, double time) throws NoMoreStepsException, OutOfbudgetException;
     double getTimeofRepair();
-    LocalDateTime getDeadline();
+    LocalDate getDeadline();
     double getTotalCost();
 }
