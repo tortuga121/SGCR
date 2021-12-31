@@ -16,8 +16,8 @@ public class View implements IView {
     private VLogin login;
 
     public View() {
-        // this.manager = new ManagerView();
-        // this.technician = new TechnicianView();
+        // this.manager = new VManager();
+        this.technician = new VTechnician();
         this.receptionist = new VReceptionist();
         this.login = new VLogin();
     }
