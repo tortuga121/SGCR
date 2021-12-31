@@ -92,7 +92,7 @@ public class Controller implements IController{
 
     private void execSugestPlan() {
         try {
-            Device device = (Device) sgcr.getBudgetRequest();
+            Device device = (Device) sgcr.getDevice(sgcr.getBudgetRequest());
             VDevice vDevice = new VDevice(device);
             VSugestRepairPlan vsrp = new VSugestRepairPlan(Integer.toString(device.getRegCode()));
             vDevice.setVisible(true);
