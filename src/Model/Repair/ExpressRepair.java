@@ -10,11 +10,10 @@ public class ExpressRepair implements IExpressRepair {
     public static final HashMap<String,Double> expressTypes;
     static {
         expressTypes = new HashMap<>();
-        expressTypes.put("substituir ecrã de um telemóvel", 1.0);
-        expressTypes.put("instalar um sistema operativo",2.0);
-        expressTypes.put("formatar um computador",3.0);
-        expressTypes.put("trocar a bateria de um computador",4.0);
-        // adicionar mais exemplos (?)
+        expressTypes.put("substituir ecrã de um telemóvel", 45.0);
+        expressTypes.put("instalar um sistema operativo",70.0);
+        expressTypes.put("formatar um computador",35.0);
+        expressTypes.put("trocar a bateria de um computador",60.0);
         // TODO
     }
 
