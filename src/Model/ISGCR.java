@@ -37,7 +37,6 @@ public interface ISGCR {
     IRepairPlan getMostUrgentRepair() throws NoRepairException;
     void repairNextStep(int regCode, int techId, double cost, double time) throws WorkerDoesNotExist, NoRepairException, NoMoreStepsException, OutOfbudgetException;
     Map<Integer,Double> evaluateCenterFunctioning () throws WorkerDoesNotExist;
-    void makeMonthEval(Year y, Month m , String eval, int manegerId) throws WorkerDoesNotExist;
     double makeExpressRepair(String type, int techId, int recepId) throws DeviceNotFoundException, WorkerDoesNotExist;
     Class<?> getWorkerType(int id) throws WorkerDoesNotExist;
     boolean login(int id, String pass) throws WorkerDoesNotExist;
@@ -52,6 +51,7 @@ public interface ISGCR {
     IDevice getDevice(int id) throws DeviceNotFoundException;
     Set<Integer> getDeliveredDevicesbyNif(String nif) throws DeviceNotFoundException;
     void devicePickup(int id, int recepid) throws DeviceNotFoundException, WorkerDoesNotExist;
+    void makeMonthEval(Year y, Month m , String eval, int manegerId) throws WorkerDoesNotExist;
     HashMap<Integer, ArrayList<Double>> techstats();
     HashMap<Integer,ArrayList<Integer>> recepStats();
     HashMap<Integer,HashMap<Integer, HashSet<Integer>>> techDetailStats();

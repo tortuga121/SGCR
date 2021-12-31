@@ -134,14 +134,14 @@ public class Controller implements IController{
             vsrp.getSaveButton().addActionListener(e3 -> {
                 try {
                     this.sgcr.sugestRepairPlan(new RepairPlan(
-                            sgcr.getMostUrgentRepair().getRegCode(),
+                            device.getRegCode(),
                             vsrp.getDescription().getText(),
                             stages,
                             Double.parseDouble(vsrp.getRepairCost().getText()),
                             LocalDate.parse(vsrp.getDeadline().getText())
                     ));
                     view.showPopUpMsg("Sugestão pronta.");
-                } catch (DeviceNotFoundException | NumberFormatException | NoRepairException ex) {
+                } catch (DeviceNotFoundException | NumberFormatException ex) {
                     view.showPopUpMsg(ex.getMessage());
                 }
             });
