@@ -76,7 +76,22 @@ public interface IWorkersCatalog {
      * @throws WorkerDoesNotExist
      */
     int getAvailableTech() throws WorkerDoesNotExist;
+
+    /**
+     * retorna um List dos workers
+     * @return List
+     */
     ArrayList<IWorker> getWorkers();
+
+    /**
+     * @return estatistica relativa aos Rececionistas
+     */
     HashMap<Integer,ArrayList<Integer>> recepStats();
+
+    /**
+     *
+     * @return estatistica relativa ao numero
+     *      * de participaçoes do tecnicos
+     */
     HashMap<Integer,HashMap<Integer, HashSet<Integer>>> getParticipations();
 }

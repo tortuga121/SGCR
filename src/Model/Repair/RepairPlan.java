@@ -2,7 +2,6 @@ package Model.Repair;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import Exception.*;
@@ -56,10 +55,6 @@ public class RepairPlan implements IRepairPlan {
         return null;
     }
 
-    @Override
-    public double totalCost() {
-        return 0;
-    }
 
     @Override
     public IRepairPlan clone() {

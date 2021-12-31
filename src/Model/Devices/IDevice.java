@@ -1,6 +1,5 @@
 package Model.Devices;
 
-import java.time.LocalDateTime;
 
 public interface IDevice {
     int getRegCode();

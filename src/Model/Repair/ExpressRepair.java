@@ -1,8 +1,8 @@
 package Model.Repair;
 
-import java.util.ArrayList;
+
 import java.util.HashMap;
-import java.util.List;
+
 
 public class ExpressRepair implements IExpressRepair {
 
@@ -14,7 +14,6 @@ public class ExpressRepair implements IExpressRepair {
         expressTypes.put("instalar um sistema operativo",70.0);
         expressTypes.put("formatar um computador",35.0);
         expressTypes.put("trocar a bateria de um computador",60.0);
-        // TODO
     }
 
     public ExpressRepair(String type) {

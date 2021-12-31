@@ -28,11 +28,17 @@ public interface ISGCR {
     LocalDate refuseBudget(int regCode) throws DeviceNotFoundException, WorkerDoesNotExist;
 
     /**
-     * Método que
-     * @param regCode
+     * Método que remove um equipamento do mapa de equipamentos com orçamentos por aprovar
+     * @param regCode identificador do equipamento
      * @throws DeviceNotFoundException
      */
     void acceptBudget(int regCode) throws DeviceNotFoundException;
+
+    /**
+     * Método que encontra  o plano de reparação para um equipamento através de um get do pedido de reparação mais antigo do catálogo
+     * @param rp
+     * @throws DeviceNotFoundException
+     */
     void sugestRepairPlan(IRepairPlan rp) throws DeviceNotFoundException;
     IRepairPlan getMostUrgentRepair() throws NoRepairException;
     void repairNextStep(int regCode, int techId, double cost, double time) throws WorkerDoesNotExist, NoRepairException, NoMoreStepsException, OutOfbudgetException;

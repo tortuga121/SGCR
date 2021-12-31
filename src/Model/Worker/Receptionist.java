@@ -1,9 +1,5 @@
 package Model.Worker;
 
-import Model.Devices.Device;
-import Model.Devices.IDevice;
-
-import java.time.LocalDateTime;
 
 public class Receptionist extends Worker implements IReceptionist {
     private int totalDeliveries;
