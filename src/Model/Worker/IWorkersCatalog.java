@@ -24,16 +24,12 @@ public interface IWorkersCatalog {
     void updateTechicianStep(int regCode, int stage, int techId) throws WorkerDoesNotExist;
     IWorker getWorker(int id) throws WorkerDoesNotExist;
     boolean existsTechnician(int id);
-<<<<<<< HEAD
 
     /**
      * Método que retorna um mapa com as reparações que um técnico realizou
      * @return mapa com as reparações de um técnico
      */
-    Map<Integer, Integer> num_rep_technicians();
-=======
     Map<Integer, Double> num_rep_technicians();
->>>>>>> 3ec84f735a440f881fba73d82b23d9c3881c697d
     boolean existsWorker(int id);
     boolean existsManager(int id);
     boolean login(int id, String password);
