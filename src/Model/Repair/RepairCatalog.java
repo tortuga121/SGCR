@@ -1,5 +1,6 @@
 package Model.Repair;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -27,7 +28,7 @@ public class RepairCatalog implements IRepairCatalog{
                 .filter(e -> e.getValue().compareTo(LocalDateTime.now()) < 0)
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue)));
         toRepair = toRepair.stream()
-                .filter(id -> repairs.get(id).getDeadline().compareTo(LocalDateTime.now()) < 0)
+                .filter(id -> repairs.get(id).getDeadline().compareTo(LocalDate.now()) < 0)
                 .collect(Collectors.toCollection(TreeSet::new));
     }
 

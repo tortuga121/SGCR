@@ -1,4 +1,5 @@
 package Model.Repair;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Optional;
@@ -10,12 +11,12 @@ public class RepairPlan implements IRepairPlan {
     private int regCode;
     private String generalDescription;
     private ArrayList<Stage> stages;
-    private LocalDateTime deadline;
+    private LocalDate deadline;
     private double price;
     private int current_stage;
 
 
-    public LocalDateTime getDeadline() {
+    public LocalDate getDeadline() {
         return deadline;
     }
 
@@ -24,7 +25,7 @@ public class RepairPlan implements IRepairPlan {
        return stages.stream().mapToDouble(Stage::getTotalCost).sum();
     }
 
-    public RepairPlan(int regCode, String generalDescription, ArrayList<Stage> stages, double price) {
+    public RepairPlan(int regCode, String generalDescription, ArrayList<Stage> stages, double price, LocalDate deadline) {
         this.regCode = regCode;
         this.generalDescription = generalDescription;
         this.stages = stages;

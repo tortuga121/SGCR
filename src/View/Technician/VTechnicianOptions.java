@@ -14,7 +14,7 @@ public class VTechnicianOptions extends JFrame {
         this.mainPanel.setPreferredSize(new Dimension(500, 400));
         this.mainPanel.revalidate();
         this.mainPanel.repaint();
-        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setContentPane(mainPanel);
         this.pack();
     }

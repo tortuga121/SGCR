@@ -27,11 +27,6 @@ public class ExpressRepair implements IExpressRepair {
         return type;
     }
 
-    
-    @Override
-    public List<String> getExpressServices() {
-        return new ArrayList<>(expressTypes.keySet());
-    }
     @Override
     public double getTimeService(String s){
         return expressTypes.get(s);

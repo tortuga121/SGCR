@@ -8,6 +8,7 @@ import Model.Repair.*;
 import Model.Worker.*;
 import Exception.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Main {
@@ -33,7 +34,7 @@ public class Main {
         sgcr.addWorker("blanc",157,Manager.class,"157");
 
         for(IDevice d : arr) sgcr.addBudgetRequest(d,129);
-        sgcr.sugestRepairPlan(new RepairPlan(0,"arranja", new ArrayList<>(),200));
+        sgcr.sugestRepairPlan(new RepairPlan(0,"arranja", new ArrayList<>(),200, LocalDate.now().plusDays(2)));
         sgcr.refuseBudget(0);
         IController c = new Controller(sgcr);
         c.exec();
