@@ -9,9 +9,30 @@ import java.time.Year;
 import java.util.*;
 
 public interface ISGCR {
+    /**
+     * Método que adiciona um pedido de orçamento ao catálogo dos equipamentos
+     * @param device equipamento para o qual foi pedido um orçamento
+     * @param recepcionistId identificador do rececionista
+     * @throws WorkerDoesNotExist
+     * @throws InvalidRegistrationCodeException
+     */
     void addBudgetRequest(IDevice device, int recepcionistId) throws WorkerDoesNotExist, InvalidRegistrationCodeException;
+
+    /**
+     * Método que remove um pedido de orçamento do catálogo de equipamentos quando o orçamento é recusado pelo cliente
+     * @param regCode identificador do equipamento
+     * @return retorna a adição do equipamento cujo orçamento foi recusado ao catálogo dos equipamentos por recolher pelo cliente
+     * @throws DeviceNotFoundException
+     * @throws WorkerDoesNotExist
+     */
     LocalDate refuseBudget(int regCode) throws DeviceNotFoundException, WorkerDoesNotExist;
-    void aceptBudget(int regCode) throws DeviceNotFoundException;
+
+    /**
+     * Método que
+     * @param regCode
+     * @throws DeviceNotFoundException
+     */
+    void acceptBudget(int regCode) throws DeviceNotFoundException;
     void sugestRepairPlan(IRepairPlan rp) throws DeviceNotFoundException;
     IRepairPlan getMostUrgentRepair() throws NoRepairException;
     void repairNextStep(int regCode, int techId, double cost, double time) throws WorkerDoesNotExist, NoRepairException, NoMoreStepsException, OutOfbudgetException;
