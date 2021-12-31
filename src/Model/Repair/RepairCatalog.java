@@ -47,7 +47,7 @@ public class RepairCatalog implements IRepairCatalog{
     @Override
     public IRepairPlan getRepairPlan(int regCode) throws NoRepairException {
         if(repairs.containsKey(regCode))
-            return repairs.get(regCode).clone();
+            return repairs.get(regCode);
         else throw new NoRepairException("Repair: " + regCode + " does not exist");
     }
 
