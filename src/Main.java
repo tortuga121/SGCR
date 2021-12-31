@@ -32,8 +32,13 @@ public class Main {
         sgcr.addWorker("blanc",157,Manager.class,"157");
 
         for(IDevice d : arr) sgcr.addBudgetRequest(d,129);
-        sgcr.sugestRepairPlan(new RepairPlan(0,"arranja", new ArrayList<>(),200, LocalDate.now().plusDays(2)));
-        sgcr.refuseBudget(0);
+        ArrayList<Step> s = new ArrayList<>();
+        s.add(new Step("este é o step 1"));
+        s.add(new Step("este é o step2"));
+        ArrayList<Stage> ss = new ArrayList<>();
+        ss.add(new Stage("este é o stage",s));
+        sgcr.sugestRepairPlan(new RepairPlan(0,"arranja", ss,200, LocalDate.now().plusDays(2)));
+
         IController c = new Controller(sgcr);
         c.exec();
     }
